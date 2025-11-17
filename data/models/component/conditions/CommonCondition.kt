@@ -1,0 +1,72 @@
+/**
+ * Copyright (C) 2025 Sokeriaaa
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of
+ * the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * See the GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program.
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
+package sokeriaaa.return0.shared.data.models.component.conditions
+
+import sokeriaaa.return0.shared.data.api.component.value.Value
+import sokeriaaa.return0.shared.data.models.component.values.Value
+
+sealed interface CommonCondition : Condition {
+
+    /**
+     * Simple "AND" condition.
+     */
+    data class And(val conditions: List<Condition>) : CommonCondition {
+        constructor(vararg conditions: Condition) : this(conditions.toList())
+    }
+
+    /**
+     * Simple "OR" condition.
+     */
+    data class Or(val conditions: List<Condition>) : CommonCondition {
+        constructor(vararg conditions: Condition) : this(conditions.toList())
+    }
+
+    /**
+     * Simple "NOT" condition.
+     */
+    data class Not(val condition: Condition) : CommonCondition
+
+    /**
+     * Succeed when [value1] greater (or equal) than [value2].
+     */
+    data class Compare(
+        val value1: Value,
+        val value2: Value,
+        val isIncludeEquals: Boolean,
+    ) : CommonCondition
+
+    /**
+     * A condition returns true with chance of [success]/[base], otherwise false.
+     */
+    data class Chance(
+        val success: Value,
+        val base: Value = Value(1),
+    ) : CommonCondition {
+        constructor(success: Int, base: Int = 1) : this(Value(success), Value(base))
+        constructor(success: Float, base: Float = 1F) : this(Value(success), Value(base))
+    }
+
+    /**
+     * A condition always returns *true*.
+     * Mainly for default value or testing purposes.
+     */
+    data object True : CommonCondition
+
+    /**
+     * A condition always returns *false*.
+     * Mainly for default value or testing purposes.
+     */
+    data object False : CommonCondition
+}

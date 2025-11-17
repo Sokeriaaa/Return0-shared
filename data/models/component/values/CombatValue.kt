@@ -1,0 +1,31 @@
+/**
+ * Copyright (C) 2025 Sokeriaaa
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of
+ * the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * See the GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program.
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
+package sokeriaaa.return0.shared.data.models.component.values
+
+sealed interface CombatValue : Value {
+    /**
+     * Returns the damage for the attack.
+     *
+     * Has no effect in a context without a damage result (always returns 0.)
+     */
+    data object Damage : CombatValue
+
+    /**
+     * Returns the damage coerced to the target's current HP for the attack.
+     *
+     * Has no effect in a context without a damage result (always returns 0.)
+     */
+    data object DamageCoerced : CombatValue
+}
