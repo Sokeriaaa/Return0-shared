@@ -22,4 +22,4 @@ import sokeriaaa.return0.shared.data.models.entity.EnemyData
 data class EnemyState(
     val enemyData: EnemyData,
     val level: Int,
-)
+) : EntityState

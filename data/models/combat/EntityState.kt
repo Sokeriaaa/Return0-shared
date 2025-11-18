@@ -14,17 +14,4 @@
  */
 package sokeriaaa.return0.shared.data.models.combat
 
-import sokeriaaa.return0.shared.data.models.entity.PartyData
-
-/**
- * The current state of party, uses to start a combat.
- *
- * @param currentHP The current hp of entity. Leave `null` to fill the maxhp.
- * @param currentSP The current sp of entity. Leave `null` to fill the maxsp.
- */
-data class PartyState(
-    val partyData: PartyData,
-    val level: Int,
-    val currentHP: Int? = null,
-    val currentSP: Int? = null,
-) : EntityState
+sealed interface EntityState
