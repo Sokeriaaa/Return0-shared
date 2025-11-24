@@ -19,28 +19,32 @@ import kotlin.random.Random
 /**
  * Returns `true` with chance of [success]/[base], otherwise `false`.
  */
-fun chance(success: Int, base: Int = 1): Boolean = Random.nextInt(base) < success
+fun chance(success: Int, base: Int = 1, random: Random = Random): Boolean =
+    random.nextInt(base) < success
 
 /**
  * Returns `true` with chance of [success]/[base], otherwise `false`.
  */
-fun chance(success: Long, base: Long = 1L): Boolean = Random.nextLong(base) < success
+fun chance(success: Long, base: Long = 1L, random: Random = Random): Boolean =
+    random.nextLong(base) < success
 
 /**
  * Returns `true` with chance of [success]/[base], otherwise `false`.
  */
-fun chance(success: Double, base: Double = 1.0): Boolean = Random.nextDouble() * base < success
+fun chance(success: Double, base: Double = 1.0, random: Random = Random): Boolean =
+    random.nextDouble() * base < success
 
 /**
  * Returns `true` with chance of [success]/[base], otherwise `false`.
  */
-fun chance(success: Float, base: Float = 1F): Boolean = Random.nextFloat() * base < success
+fun chance(success: Float, base: Float = 1F, random: Random = Random): Boolean =
+    random.nextFloat() * base < success
 
 /**
  * Run [ifSuccess] with chance of [success]/[base].
  */
-inline fun withChance(success: Int, base: Int = 1, ifSuccess: () -> Unit) {
-    if (chance(success = success, base = base)) {
+inline fun withChance(success: Int, base: Int = 1, random: Random = Random, ifSuccess: () -> Unit) {
+    if (chance(success = success, base = base, random = random)) {
         ifSuccess()
     }
 }
@@ -48,8 +52,13 @@ inline fun withChance(success: Int, base: Int = 1, ifSuccess: () -> Unit) {
 /**
  * Run [ifSuccess] with chance of [success]/[base].
  */
-inline fun withChance(success: Long, base: Long = 1L, ifSuccess: () -> Unit) {
-    if (chance(success = success, base = base)) {
+inline fun withChance(
+    success: Long,
+    base: Long = 1L,
+    random: Random = Random,
+    ifSuccess: () -> Unit
+) {
+    if (chance(success = success, base = base, random = random)) {
         ifSuccess()
     }
 }
@@ -57,8 +66,13 @@ inline fun withChance(success: Long, base: Long = 1L, ifSuccess: () -> Unit) {
 /**
  * Run [ifSuccess] with chance of [success]/[base].
  */
-inline fun withChance(success: Double, base: Double = 1.0, ifSuccess: () -> Unit) {
-    if (chance(success = success, base = base)) {
+inline fun withChance(
+    success: Double,
+    base: Double = 1.0,
+    random: Random = Random,
+    ifSuccess: () -> Unit
+) {
+    if (chance(success = success, base = base, random = random)) {
         ifSuccess()
     }
 }
