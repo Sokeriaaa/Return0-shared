@@ -14,9 +14,9 @@
  */
 package sokeriaaa.return0.shared.data.models.entity
 
-import sokeriaaa.return0.models.entity.category.Category
 import sokeriaaa.return0.shared.data.models.action.function.FunctionData
 import sokeriaaa.return0.shared.data.models.action.function.FunctionTarget
+import sokeriaaa.return0.shared.data.models.entity.category.Category
 
 /**
  * Entity data class.

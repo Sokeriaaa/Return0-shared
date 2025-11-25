@@ -14,8 +14,8 @@
  */
 package sokeriaaa.return0.shared.data.models.component.conditions
 
-import sokeriaaa.return0.models.entity.category.Category
 import sokeriaaa.return0.shared.data.models.component.values.Value
+import sokeriaaa.return0.shared.data.models.entity.category.Category
 
 sealed interface EntityCondition : Condition {
 

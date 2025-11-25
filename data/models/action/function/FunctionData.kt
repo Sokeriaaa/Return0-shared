@@ -15,9 +15,9 @@
 package sokeriaaa.return0.shared.data.models.action.function
 
 import kotlinx.serialization.Serializable
-import sokeriaaa.return0.models.entity.category.Category
 import sokeriaaa.return0.shared.data.models.component.extras.Extra
 import sokeriaaa.return0.shared.data.models.component.values.Value
+import sokeriaaa.return0.shared.data.models.entity.category.Category
 
 /**
  * Data class for a function (skill).
