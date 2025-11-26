@@ -14,10 +14,13 @@
  */
 package sokeriaaa.return0.shared.data.models.entity
 
+import kotlinx.serialization.Serializable
+
 /**
  * Entity growth table. We use a simple linear growth here.
  * The final value = base * (1 + growth * level).
  */
+@Serializable
 data class EntityGrowth(
     val atkGrowth: Float,
     val defGrowth: Float,

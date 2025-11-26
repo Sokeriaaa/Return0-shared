@@ -14,14 +14,17 @@
  */
 package sokeriaaa.return0.shared.data.models.component.conditions
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.api.component.value.Value
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
+@Serializable
 sealed interface CommonCondition : Condition {
 
     /**
      * Simple "AND" condition.
      */
+    @Serializable
     data class And(val conditions: List<Condition>) : CommonCondition {
         constructor(vararg conditions: Condition) : this(conditions.toList())
     }
@@ -29,6 +32,7 @@ sealed interface CommonCondition : Condition {
     /**
      * Simple "OR" condition.
      */
+    @Serializable
     data class Or(val conditions: List<Condition>) : CommonCondition {
         constructor(vararg conditions: Condition) : this(conditions.toList())
     }
@@ -36,11 +40,13 @@ sealed interface CommonCondition : Condition {
     /**
      * Simple "NOT" condition.
      */
+    @Serializable
     data class Not(val condition: Condition) : CommonCondition
 
     /**
      * Succeed when [value1] greater (or equal) than [value2].
      */
+    @Serializable
     data class Compare(
         val value1: Value,
         val value2: Value,
@@ -50,6 +56,7 @@ sealed interface CommonCondition : Condition {
     /**
      * A condition returns true with chance of [success]/[base], otherwise false.
      */
+    @Serializable
     data class Chance(
         val success: Value,
         val base: Value = Value(1),
@@ -62,11 +69,13 @@ sealed interface CommonCondition : Condition {
      * A condition always returns *true*.
      * Mainly for default value or testing purposes.
      */
+    @Serializable
     data object True : CommonCondition
 
     /**
      * A condition always returns *false*.
      * Mainly for default value or testing purposes.
      */
+    @Serializable
     data object False : CommonCondition
 }

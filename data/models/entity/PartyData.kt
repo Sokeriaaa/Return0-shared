@@ -14,9 +14,12 @@
  */
 package sokeriaaa.return0.shared.data.models.entity
 
+import kotlinx.serialization.Serializable
+
 /**
  * Party data.
  */
+@Serializable
 data class PartyData(
     val entityData: EntityData,
     val growth: EntityGrowth,

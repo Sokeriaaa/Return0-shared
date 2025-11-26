@@ -14,20 +14,24 @@
  */
 package sokeriaaa.return0.shared.data.models.component.extras
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
+@Serializable
 sealed interface CommonExtra : Extra {
 
     /**
      * An empty action extra does nothing.
      */
+    @Serializable
     data object Empty : CommonExtra
 
     /**
      * Execute the [condition] and depending the result to execute [ifTrue] or [ifFalse].
      */
     @ConsistentCopyVisibility
+    @Serializable
     data class Conditioned internal constructor(
         val condition: Condition,
         val ifTrue: Extra? = null,
@@ -38,6 +42,7 @@ sealed interface CommonExtra : Extra {
      * A group of extras, all extra will be executed one by one.
      */
     @ConsistentCopyVisibility
+    @Serializable
     data class Grouped internal constructor(val extras: List<Extra>) : CommonExtra
 
     /**
@@ -53,17 +58,20 @@ sealed interface CommonExtra : Extra {
      * @see sokeriaaa.return0.shared.data.models.component.values.CommonValue.LoadValue
      * @see sokeriaaa.return0.models.action.Action.values
      */
+    @Serializable
     data class SaveValue(val key: String, val value: Value) : CommonExtra
 
     /**
      * Execute [extra] on the **user** of action.
      */
     @ConsistentCopyVisibility
+    @Serializable
     data class ForUser internal constructor(val extra: Extra) : CommonExtra
 
     /**
      * Execute [extra] but with **the user and the target swapped**.
      */
     @ConsistentCopyVisibility
+    @Serializable
     data class Swapped internal constructor(val extra: Extra) : CommonExtra
 }

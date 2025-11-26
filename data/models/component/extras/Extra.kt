@@ -14,7 +14,10 @@
  */
 package sokeriaaa.return0.shared.data.models.component.extras
 
+import kotlinx.serialization.Serializable
+
 /**
  * Extras being executed after a successful action.
  */
+@Serializable
 sealed interface Extra

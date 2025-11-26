@@ -15,11 +15,13 @@
 package sokeriaaa.return0.shared.data.models.entity.category
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Category of an Entity or Action, like "Types" in Pokémon.
  * Damage will be affected by categories of both Action and Entity.
  */
+@Serializable
 enum class Category(val id: Int, val icon: String) {
 
     /**

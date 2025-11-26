@@ -14,9 +14,12 @@
  */
 package sokeriaaa.return0.shared.data.models.entity
 
+import kotlinx.serialization.Serializable
+
 /**
  * Enemy data.
  */
+@Serializable
 data class EnemyData(
     val entityData: EntityData,
     val growth: EntityGrowth,

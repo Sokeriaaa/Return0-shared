@@ -14,9 +14,12 @@
  */
 package sokeriaaa.return0.shared.data.models.title
 
+import kotlinx.serialization.Serializable
+
 /**
  * User title.
  */
+@Serializable
 enum class Title {
     NOOB,
     BEGINNER,

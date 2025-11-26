@@ -14,6 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.combat
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.entity.PartyData
 
 /**
@@ -22,6 +23,7 @@ import sokeriaaa.return0.shared.data.models.entity.PartyData
  * @param currentHP The current hp of entity. Leave `null` to fill the maxhp.
  * @param currentSP The current sp of entity. Leave `null` to fill the maxsp.
  */
+@Serializable
 data class PartyState(
     val partyData: PartyData,
     val level: Int,

@@ -14,58 +14,71 @@
  */
 package sokeriaaa.return0.shared.data.models.component.conditions
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.entity.category.Category
 
+@Serializable
 sealed interface EntityCondition : Condition {
 
+    @Serializable
     sealed interface Categories : EntityCondition {
         /**
          * The target has the [category].
          */
+        @Serializable
         data class Has(val category: Category) : Categories
 
         /**
          * The target has the one or more of categories in [categories].
          */
+        @Serializable
         data class HasOneOf(val categories: List<Category>) : Categories
     }
 
+    @Serializable
     sealed interface Effects : EntityCondition {
         /**
          * The target has the effect with [effectName].
          */
+        @Serializable
         data class Has(val effectName: String) : Effects
 
         /**
          * The target has any effect.
          */
+        @Serializable
         data object HasAny : Effects
     }
 
+    @Serializable
     sealed interface Status : EntityCondition {
         /**
          * The target has less HP (or equals to when [isIncludeEquals] == true)
          * than the rate of MAXHP.
          */
+        @Serializable
         data class HPLessThan(val rate: Value, val isIncludeEquals: Boolean) : Status
 
         /**
          * The target has more HP (or equals to when [isIncludeEquals] == true)
          * than the rate of MAXHP.
          */
+        @Serializable
         data class HPMoreThan(val rate: Value, val isIncludeEquals: Boolean) : Status
 
         /**
          * The target has less SP (or equals to when [isIncludeEquals] == true)
          * than the rate of MAXSP.
          */
+        @Serializable
         data class SPLessThan(val rate: Value, val isIncludeEquals: Boolean) : Status
 
         /**
          * The target has more HP (or equals to when [isIncludeEquals] == true)
          * than the rate of MAXSP.
          */
+        @Serializable
         data class SPMoreThan(val rate: Value, val isIncludeEquals: Boolean) : Status
     }
 

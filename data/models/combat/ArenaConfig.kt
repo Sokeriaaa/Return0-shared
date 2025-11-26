@@ -14,9 +14,12 @@
  */
 package sokeriaaa.return0.shared.data.models.combat
 
+import kotlinx.serialization.Serializable
+
 /**
  * Arena config, uses to start a combat.
  */
+@Serializable
 data class ArenaConfig(
     val parties: List<PartyState>,
     val enemies: List<EnemyState>,

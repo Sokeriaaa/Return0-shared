@@ -14,7 +14,10 @@
  */
 package sokeriaaa.return0.shared.data.models.component.conditions
 
+import kotlinx.serialization.Serializable
+
 /**
  * A condition class being calculated during the combat.
  */
+@Serializable
 sealed interface Condition

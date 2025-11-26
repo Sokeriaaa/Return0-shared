@@ -14,11 +14,13 @@
  */
 package sokeriaaa.return0.shared.data.models.combat
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.entity.EnemyData
 
 /**
  * Enemy state, uses to start a combat.
  */
+@Serializable
 data class EnemyState(
     val enemyData: EnemyData,
     val level: Int,

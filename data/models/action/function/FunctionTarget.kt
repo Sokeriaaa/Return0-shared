@@ -14,54 +14,66 @@
  */
 package sokeriaaa.return0.shared.data.models.action.function
 
+import kotlinx.serialization.Serializable
+
 /**
  * State target selection for functions.
  */
+@Serializable
 sealed interface FunctionTarget {
 
     /**
      * Only take effect for the user.
      */
+    @Serializable
     data object Self : FunctionTarget
 
     /**
      * Select a single team mate (or self).
      */
+    @Serializable
     data object SingleTeamMate : FunctionTarget
 
     /**
      * Random of team mates. (non-selectable)
      */
+    @Serializable
     data class RandomTeamMates(val count: Int) : FunctionTarget
 
     /**
      * Applied to all team mates (include self)
      */
+    @Serializable
     data object AllTeamMates : FunctionTarget
 
     /**
      * Select a single enemy.
      */
+    @Serializable
     data object SingleEnemy : FunctionTarget
 
     /**
      * Random of enemies. (non-selectable)
      */
+    @Serializable
     data class RandomEnemies(val count: Int) : FunctionTarget
 
     /**
      * Applied to all enemies.
      */
+    @Serializable
     data object AllEnemies : FunctionTarget
 
     /**
      * Applied to the full arena except self (include all team mates and all enemies.)
      */
+    @Serializable
     data object FullArenaExceptSelf : FunctionTarget
 
     /**
      * Applied to the full arena (include self, all team mates and all enemies.)
      */
+    @Serializable
     data object FullArena : FunctionTarget
 
 }

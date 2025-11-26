@@ -14,12 +14,16 @@
  */
 package sokeriaaa.return0.shared.data.models.component.values
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 sealed interface CombatValue : Value {
     /**
      * Returns the damage for the attack.
      *
      * Has no effect in a context without a damage result (always returns 0.)
      */
+    @Serializable
     data object Damage : CombatValue
 
     /**
@@ -27,5 +31,6 @@ sealed interface CombatValue : Value {
      *
      * Has no effect in a context without a damage result (always returns 0.)
      */
+    @Serializable
     data object DamageCoerced : CombatValue
 }

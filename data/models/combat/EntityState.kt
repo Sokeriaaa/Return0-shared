@@ -14,4 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.combat
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 sealed interface EntityState

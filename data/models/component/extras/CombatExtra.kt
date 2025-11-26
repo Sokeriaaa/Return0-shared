@@ -14,16 +14,29 @@
  */
 package sokeriaaa.return0.shared.data.models.component.extras
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
 /**
  * Extras for the combat.
  */
+@Serializable
 sealed interface CombatExtra : Extra {
+    @Serializable
     data class HPChange(val hpChange: Value) : CombatExtra
+
+    @Serializable
     data class SPChange(val spChange: Value) : CombatExtra
+
+    @Serializable
     data class APChange(val apChange: Value) : CombatExtra
+
+    @Serializable
     data class AttachEffect(val name: String, val tier: Value, val turns: Value) : CombatExtra
+
+    @Serializable
     data class RemoveEffect(val name: String) : CombatExtra
+
+    @Serializable
     data object RemoveAllEffect : CombatExtra
 }

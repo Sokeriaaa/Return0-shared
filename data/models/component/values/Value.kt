@@ -14,7 +14,10 @@
  */
 package sokeriaaa.return0.shared.data.models.component.values
 
+import kotlinx.serialization.Serializable
+
 /**
  * A value class being calculated during the combat.
  */
+@Serializable
 sealed interface Value

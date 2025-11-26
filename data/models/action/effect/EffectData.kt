@@ -14,6 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.action.effect
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.extras.Extra
 
 /**
@@ -29,6 +30,7 @@ import sokeriaaa.return0.shared.data.models.component.extras.Extra
  * @param modifiers Modifiers of this effect.
  * @param extra Extra is executed everytime after current entity taking an action.
  */
+@Serializable
 data class EffectData(
     val name: String,
     val isDebuff: Boolean,

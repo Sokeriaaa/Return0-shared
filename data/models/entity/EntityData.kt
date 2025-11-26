@@ -14,6 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.entity
 
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.action.function.FunctionData
 import sokeriaaa.return0.shared.data.models.action.function.FunctionTarget
 import sokeriaaa.return0.shared.data.models.entity.category.Category
@@ -27,6 +28,7 @@ import sokeriaaa.return0.shared.data.models.entity.category.Category
  * @param functions Functions of this entity.
  * @param attackModifier Modifier for the base attack action.
  */
+@Serializable
 data class EntityData(
     val name: String,
     val category: Category,
@@ -44,6 +46,7 @@ data class EntityData(
      * The modifier for the general attack action for entities. It's possible to alter the power
      *  even attack times for entity's attack action.
      */
+    @Serializable
     data class GeneralAttackModifier(
         val power: Int? = null,
         val attackTimes: Int? = null,

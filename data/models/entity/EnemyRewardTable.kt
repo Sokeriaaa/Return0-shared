@@ -14,10 +14,13 @@
  */
 package sokeriaaa.return0.shared.data.models.entity
 
+import kotlinx.serialization.Serializable
+
 /**
  * @param token Tokens reward to player upon combat winning for this enemy.
  * @param exp Experience reward to all classes (battlers) upon combat winning for this enemy.
  */
+@Serializable
 data class EnemyRewardTable(
     val token: Int,
     val exp: Int,
