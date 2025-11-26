@@ -25,13 +25,17 @@ import kotlinx.serialization.Serializable
 enum class Category(val id: Int, val icon: String) {
 
     /**
-     * A special category for Items. (Hide)
+     * A special category for Items.
+     *
+     * Should not be used for the category of entity or functions.
      */
     @SerialName("itm")
     ITEM(id = -1, icon = ""),
 
     /**
-     * A special category for Common actions like Attack, Defense and Escape. (Hide)
+     * A special category for Common actions like Attack, Defense and Escape.
+     *
+     * Should not be used for the category of entity or functions.
      */
     @SerialName("nml")
     NORMAL(id = 0, icon = ""),
@@ -42,27 +46,33 @@ enum class Category(val id: Int, val icon: String) {
     @SerialName("int")
     INTERFACE(id = 2, icon = "\uD83E\uDDE9\uFE0F"),
 
-    @SerialName("gen")
-    GENERIC(id = 3, icon = "\uD83C\uDF00"),
-
-    @SerialName("ioo")
-    IO(id = 4, icon = "\uD83D\uDDC2\uFE0F"),
+    @SerialName("ref")
+    REFLECT(id = 3, icon = "\uD83D\uDEE0\uFE0F"),
 
     @SerialName("con")
-    CONCURRENT(id = 5, icon = "\uD83D\uDD17"),
-
-    @SerialName("exc")
-    EXCEPTION(id = 6, icon = "\uD83D\uDCA5"),
-
-    @SerialName("mem")
-    MEMORY(id = 7, icon = "\uD83D\uDCBE"),
+    CONCURRENT(id = 4, icon = "\uD83D\uDD17"),
 
     @SerialName("str")
-    STREAM(id = 8, icon = "\uD83C\uDF0A"),
+    STREAM(id = 5, icon = "\uD83C\uDF0A"),
+
+    @SerialName("ioo")
+    IO(id = 6, icon = "\uD83D\uDDC2\uFE0F"),
+
+    @SerialName("exc")
+    EXCEPTION(id = 7, icon = "\uD83D\uDCA5"),
+
+    @SerialName("sec")
+    SECURITY(id = 8, icon = "\uD83D\uDD10"),
 
     @SerialName("dbg")
     DEBUG(id = 9, icon = "\uD83E\uDEB2"),
 
+    @SerialName("gen")
+    GENERIC(id = 10, icon = "\uD83C\uDF00"),
+
+    @SerialName("mem")
+    MEMORY(id = 11, icon = "\uD83D\uDCBE"),
+
     @SerialName("vid")
-    VOID(id = 10, icon = "\uD83C\uDF0C"),
+    VOID(id = 12, icon = "\uD83C\uDF0C"),
 }
