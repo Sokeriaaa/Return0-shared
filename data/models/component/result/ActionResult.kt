@@ -14,6 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.component.result
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -46,6 +47,7 @@ sealed interface ActionResult {
      * @param isCritical Whether this attack is critical or not.
      */
     @Serializable
+    @SerialName("Damage")
     data class Damage(
         override val fromIndex: Int,
         override val toIndex: Int,
@@ -64,6 +66,7 @@ sealed interface ActionResult {
      * @param healCoerced Final heal coerced at most for target's lost HP before healing.
      */
     @Serializable
+    @SerialName("Heal")
     data class Heal(
         override val fromIndex: Int,
         override val toIndex: Int,
@@ -77,6 +80,7 @@ sealed interface ActionResult {
      * SP change.
      */
     @Serializable
+    @SerialName("SpChange")
     data class SpChange(
         override val fromIndex: Int,
         override val toIndex: Int,
@@ -90,6 +94,7 @@ sealed interface ActionResult {
      * AP change.
      */
     @Serializable
+    @SerialName("ApChange")
     data class ApChange(
         override val fromIndex: Int,
         override val toIndex: Int,
@@ -103,6 +108,7 @@ sealed interface ActionResult {
      * Attached/Overrode an effect to target.
      */
     @Serializable
+    @SerialName("AttachEffect")
     data class AttachEffect(
         override val fromIndex: Int,
         override val toIndex: Int,
@@ -117,6 +123,7 @@ sealed interface ActionResult {
      * Removed an effect from target.
      */
     @Serializable
+    @SerialName("RemoveEffect")
     data class RemoveEffect(
         override val fromIndex: Int,
         override val toIndex: Int,
@@ -129,6 +136,7 @@ sealed interface ActionResult {
      * A missed attack.
      */
     @Serializable
+    @SerialName("Missed")
     data class Missed(
         override val fromIndex: Int,
         override val toIndex: Int,
@@ -140,6 +148,7 @@ sealed interface ActionResult {
      * Action successfully executed but had no effect or be nullified.
      */
     @Serializable
+    @SerialName("NoEffect")
     data class NoEffect(
         override val fromIndex: Int,
         override val toIndex: Int,

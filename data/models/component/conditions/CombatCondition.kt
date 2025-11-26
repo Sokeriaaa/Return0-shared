@@ -14,9 +14,11 @@
  */
 package sokeriaaa.return0.shared.data.models.component.conditions
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@SerialName("Combat")
 sealed interface CombatCondition : Condition {
     /**
      * Whether the damage is a critical hit.
@@ -24,5 +26,6 @@ sealed interface CombatCondition : Condition {
      * Has no effect in a context without a damage result (always returns false.)
      */
     @Serializable
+    @SerialName("Combat.Critical")
     data object Critical : CombatCondition
 }

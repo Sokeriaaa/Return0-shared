@@ -14,6 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.action.function
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -26,54 +27,63 @@ sealed interface FunctionTarget {
      * Only take effect for the user.
      */
     @Serializable
+    @SerialName("Self")
     data object Self : FunctionTarget
 
     /**
      * Select a single team mate (or self).
      */
     @Serializable
+    @SerialName("SingleTeamMate")
     data object SingleTeamMate : FunctionTarget
 
     /**
      * Random of team mates. (non-selectable)
      */
     @Serializable
+    @SerialName("RandomTeamMates")
     data class RandomTeamMates(val count: Int) : FunctionTarget
 
     /**
      * Applied to all team mates (include self)
      */
     @Serializable
+    @SerialName("AllTeamMates")
     data object AllTeamMates : FunctionTarget
 
     /**
      * Select a single enemy.
      */
     @Serializable
+    @SerialName("SingleEnemy")
     data object SingleEnemy : FunctionTarget
 
     /**
      * Random of enemies. (non-selectable)
      */
     @Serializable
+    @SerialName("RandomEnemies")
     data class RandomEnemies(val count: Int) : FunctionTarget
 
     /**
      * Applied to all enemies.
      */
     @Serializable
+    @SerialName("AllEnemies")
     data object AllEnemies : FunctionTarget
 
     /**
      * Applied to the full arena except self (include all team mates and all enemies.)
      */
     @Serializable
+    @SerialName("FullArenaExceptSelf")
     data object FullArenaExceptSelf : FunctionTarget
 
     /**
      * Applied to the full arena (include self, all team mates and all enemies.)
      */
     @Serializable
+    @SerialName("FullArena")
     data object FullArena : FunctionTarget
 
 }

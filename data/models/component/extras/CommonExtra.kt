@@ -14,17 +14,20 @@
  */
 package sokeriaaa.return0.shared.data.models.component.extras
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
 @Serializable
+@SerialName("Common")
 sealed interface CommonExtra : Extra {
 
     /**
      * An empty action extra does nothing.
      */
     @Serializable
+    @SerialName("Common.Empty")
     data object Empty : CommonExtra
 
     /**
@@ -32,6 +35,7 @@ sealed interface CommonExtra : Extra {
      */
     @ConsistentCopyVisibility
     @Serializable
+    @SerialName("Common.Conditioned")
     data class Conditioned internal constructor(
         val condition: Condition,
         val ifTrue: Extra? = null,
@@ -43,6 +47,7 @@ sealed interface CommonExtra : Extra {
      */
     @ConsistentCopyVisibility
     @Serializable
+    @SerialName("Common.Grouped")
     data class Grouped internal constructor(val extras: List<Extra>) : CommonExtra
 
     /**
@@ -59,6 +64,7 @@ sealed interface CommonExtra : Extra {
      * @see sokeriaaa.return0.models.action.Action.values
      */
     @Serializable
+    @SerialName("Common.SaveValue")
     data class SaveValue(val key: String, val value: Value) : CommonExtra
 
     /**
@@ -66,6 +72,7 @@ sealed interface CommonExtra : Extra {
      */
     @ConsistentCopyVisibility
     @Serializable
+    @SerialName("Common.ForUser")
     data class ForUser internal constructor(val extra: Extra) : CommonExtra
 
     /**
@@ -73,5 +80,6 @@ sealed interface CommonExtra : Extra {
      */
     @ConsistentCopyVisibility
     @Serializable
+    @SerialName("Common.Swapped")
     data class Swapped internal constructor(val extra: Extra) : CommonExtra
 }

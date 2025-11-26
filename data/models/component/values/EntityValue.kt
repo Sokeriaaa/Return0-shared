@@ -14,62 +14,81 @@
  */
 package sokeriaaa.return0.shared.data.models.component.values
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
  * Data of the target. Can be wrapped with forUser to apply for user.
  */
 @Serializable
+@SerialName("Entity")
 sealed interface EntityValue : Value {
     @Serializable
+    @SerialName("Entity.ATK")
     data object ATK : EntityValue
 
     @Serializable
+    @SerialName("Entity.DEF")
     data object DEF : EntityValue
 
     @Serializable
+    @SerialName("Entity.SPD")
     data object SPD : EntityValue
 
     @Serializable
+    @SerialName("Entity.HP")
     data object HP : EntityValue
 
     @Serializable
+    @SerialName("Entity.SP")
     data object SP : EntityValue
 
     @Serializable
+    @SerialName("Entity.AP")
     data object AP : EntityValue
 
     @Serializable
+    @SerialName("Entity.MAXHP")
     data object MAXHP : EntityValue
 
     @Serializable
+    @SerialName("Entity.MAXSP")
     data object MAXSP : EntityValue
 
     @Serializable
+    @SerialName("Entity.MAXAP")
     data object MAXAP : EntityValue
 
     @Serializable
+    @SerialName("Entity.BaseATK")
     data object BaseATK : EntityValue
 
     @Serializable
+    @SerialName("Entity.BaseDEF")
     data object BaseDEF : EntityValue
 
     @Serializable
+    @SerialName("Entity.BaseSPD")
     data object BaseSPD : EntityValue
 
     @Serializable
+    @SerialName("Entity.BaseHP")
     data object BaseHP : EntityValue
 
     @Serializable
+    @SerialName("Entity.BaseSP")
     data object BaseSP : EntityValue
 
     @Serializable
+    @SerialName("Entity.BaseAP")
     data object BaseAP : EntityValue
 
     @Serializable
+    @SerialName("Entity.CriticalRate")
     data object CriticalRate : EntityValue
 
     @Serializable
+    @SerialName("Entity.CriticalDMG")
     data object CriticalDMG : EntityValue
 
     /**
@@ -78,11 +97,13 @@ sealed interface EntityValue : Value {
      * If the effect is stackable, the return value will be the sum of all stacked effects.
      */
     @Serializable
+    @SerialName("Entity.TurnsLeftOf")
     data class TurnsLeftOf(val effectName: String) : EntityValue
 
     /**
      * Returns the total number of turns across all effects.
      */
     @Serializable
+    @SerialName("Entity.TurnsLeftOfAllEffects")
     data object TurnsLeftOfAllEffects : EntityValue
 }

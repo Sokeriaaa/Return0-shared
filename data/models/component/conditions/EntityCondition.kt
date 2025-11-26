@@ -14,50 +14,60 @@
  */
 package sokeriaaa.return0.shared.data.models.component.conditions
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.entity.category.Category
 
 @Serializable
+@SerialName("Entity")
 sealed interface EntityCondition : Condition {
 
     @Serializable
+    @SerialName("Entity.Categories")
     sealed interface Categories : EntityCondition {
         /**
          * The target has the [category].
          */
         @Serializable
+        @SerialName("Entity.Categories.Has")
         data class Has(val category: Category) : Categories
 
         /**
          * The target has the one or more of categories in [categories].
          */
         @Serializable
+        @SerialName("Entity.Categories.HasOneOf")
         data class HasOneOf(val categories: List<Category>) : Categories
     }
 
     @Serializable
+    @SerialName("Entity.Effects")
     sealed interface Effects : EntityCondition {
         /**
          * The target has the effect with [effectName].
          */
         @Serializable
+        @SerialName("Entity.Effects.Has")
         data class Has(val effectName: String) : Effects
 
         /**
          * The target has any effect.
          */
         @Serializable
+        @SerialName("Entity.Effects.HasAny")
         data object HasAny : Effects
     }
 
     @Serializable
+    @SerialName("Entity.Status")
     sealed interface Status : EntityCondition {
         /**
          * The target has less HP (or equals to when [isIncludeEquals] == true)
          * than the rate of MAXHP.
          */
         @Serializable
+        @SerialName("Entity.Status.HPLessThan")
         data class HPLessThan(val rate: Value, val isIncludeEquals: Boolean) : Status
 
         /**
@@ -65,6 +75,7 @@ sealed interface EntityCondition : Condition {
          * than the rate of MAXHP.
          */
         @Serializable
+        @SerialName("Entity.Status.HPMoreThan")
         data class HPMoreThan(val rate: Value, val isIncludeEquals: Boolean) : Status
 
         /**
@@ -72,6 +83,7 @@ sealed interface EntityCondition : Condition {
          * than the rate of MAXSP.
          */
         @Serializable
+        @SerialName("Entity.Status.SPLessThan")
         data class SPLessThan(val rate: Value, val isIncludeEquals: Boolean) : Status
 
         /**
@@ -79,6 +91,7 @@ sealed interface EntityCondition : Condition {
          * than the rate of MAXSP.
          */
         @Serializable
+        @SerialName("Entity.Status.SPMoreThan")
         data class SPMoreThan(val rate: Value, val isIncludeEquals: Boolean) : Status
     }
 

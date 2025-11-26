@@ -14,10 +14,12 @@
  */
 package sokeriaaa.return0.shared.data.models.component.values
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 
 @Serializable
+@SerialName("Common")
 sealed interface CommonValue : Value {
 
     /**
@@ -25,43 +27,53 @@ sealed interface CommonValue : Value {
      */
     @ConsistentCopyVisibility
     @Serializable
+    @SerialName("Common.Constant")
     data class Constant internal constructor(val value: Float) : CommonValue
 
     /**
      * Math operations
      */
     @Serializable
+    @SerialName("Common.Math")
     sealed interface Math : CommonValue {
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.Sum")
         data class Sum internal constructor(val values: List<Value>) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.Times")
         data class Times internal constructor(val value1: Value, val value2: Value) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.TimesConst")
         data class TimesConst internal constructor(val value1: Value, val value2: Float) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.Div")
         data class Div internal constructor(val value1: Value, val value2: Value) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.UnaryMinus")
         data class UnaryMinus internal constructor(val value1: Value) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.Shift")
         data class Shift internal constructor(val value1: Value, val shift: Value) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.AbsoluteValue")
         data class AbsoluteValue internal constructor(val value: Value) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.Coerced")
         data class Coerced internal constructor(
             val value: Value,
             val min: Value? = null,
@@ -70,14 +82,17 @@ sealed interface CommonValue : Value {
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.MinOf")
         data class MinOf internal constructor(val values: List<Value>) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.MaxOf")
         data class MaxOf internal constructor(val values: List<Value>) : Math
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.RandomInt")
         data class RandomInt internal constructor(
             val start: Int,
             val endInclusive: Int,
@@ -85,6 +100,7 @@ sealed interface CommonValue : Value {
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.RandomFloat")
         data class RandomFloat internal constructor(
             val start: Float,
             val end: Float,
@@ -96,6 +112,7 @@ sealed interface CommonValue : Value {
      */
     @ConsistentCopyVisibility
     @Serializable
+    @SerialName("Common.Conditioned")
     data class Conditioned internal constructor(
         val condition: Condition,
         val ifTrue: Value? = null,
@@ -111,6 +128,7 @@ sealed interface CommonValue : Value {
      * @see sokeriaaa.return0.models.action.Action.values
      */
     @Serializable
+    @SerialName("Common.LoadValue")
     data class LoadValue(
         val key: String,
         val defaultValue: Value? = null,

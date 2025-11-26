@@ -14,17 +14,20 @@
  */
 package sokeriaaa.return0.shared.data.models.component.conditions
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.api.component.value.Value
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
 @Serializable
+@SerialName("Common")
 sealed interface CommonCondition : Condition {
 
     /**
      * Simple "AND" condition.
      */
     @Serializable
+    @SerialName("Common.And")
     data class And(val conditions: List<Condition>) : CommonCondition {
         constructor(vararg conditions: Condition) : this(conditions.toList())
     }
@@ -33,6 +36,7 @@ sealed interface CommonCondition : Condition {
      * Simple "OR" condition.
      */
     @Serializable
+    @SerialName("Common.Or")
     data class Or(val conditions: List<Condition>) : CommonCondition {
         constructor(vararg conditions: Condition) : this(conditions.toList())
     }
@@ -41,12 +45,14 @@ sealed interface CommonCondition : Condition {
      * Simple "NOT" condition.
      */
     @Serializable
+    @SerialName("Common.Not")
     data class Not(val condition: Condition) : CommonCondition
 
     /**
      * Succeed when [value1] greater (or equal) than [value2].
      */
     @Serializable
+    @SerialName("Common.Compare")
     data class Compare(
         val value1: Value,
         val value2: Value,
@@ -57,6 +63,7 @@ sealed interface CommonCondition : Condition {
      * A condition returns true with chance of [success]/[base], otherwise false.
      */
     @Serializable
+    @SerialName("Common.Chance")
     data class Chance(
         val success: Value,
         val base: Value = Value(1),
@@ -70,6 +77,7 @@ sealed interface CommonCondition : Condition {
      * Mainly for default value or testing purposes.
      */
     @Serializable
+    @SerialName("Common.True")
     data object True : CommonCondition
 
     /**
@@ -77,5 +85,6 @@ sealed interface CommonCondition : Condition {
      * Mainly for default value or testing purposes.
      */
     @Serializable
+    @SerialName("Common.False")
     data object False : CommonCondition
 }
