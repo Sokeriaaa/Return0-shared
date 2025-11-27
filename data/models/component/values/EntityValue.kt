@@ -48,6 +48,18 @@ sealed interface EntityValue : Value {
     data object AP : EntityValue
 
     @Serializable
+    @SerialName("Entity.HPRate")
+    data object HPRate : EntityValue
+
+    @Serializable
+    @SerialName("Entity.SPRate")
+    data object SPRate : EntityValue
+
+    @Serializable
+    @SerialName("Entity.APRate")
+    data object APRate : EntityValue
+
+    @Serializable
     @SerialName("Entity.MAXHP")
     data object MAXHP : EntityValue
 
