@@ -121,12 +121,15 @@ sealed interface ActionResult {
 
     /**
      * Removed an effect from target.
+     *
+     * @param originalIndex The index of whom attached this effect to the target.
      */
     @Serializable
     @SerialName("RemoveEffect")
     data class RemoveEffect(
         override val fromIndex: Int,
         override val toIndex: Int,
+        val originalIndex: Int,
         val effectName: String,
     ) : ActionResult {
         override fun isValid(): Boolean = true
