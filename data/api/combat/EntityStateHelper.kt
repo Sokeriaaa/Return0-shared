@@ -17,9 +17,7 @@ package sokeriaaa.return0.shared.data.api.combat
 import sokeriaaa.return0.shared.data.models.combat.EnemyState
 import sokeriaaa.return0.shared.data.models.combat.EntityState
 import sokeriaaa.return0.shared.data.models.combat.PartyState
-import sokeriaaa.return0.shared.data.models.entity.EnemyRewardTable
 import sokeriaaa.return0.shared.data.models.entity.EntityData
-import sokeriaaa.return0.shared.data.models.entity.EntityGrowth
 
 val EntityState.level: Int
     get() = when (this) {
@@ -29,18 +27,6 @@ val EntityState.level: Int
 
 val EntityState.entityData: EntityData
     get() = when (this) {
-        is EnemyState -> enemyData.entityData
-        is PartyState -> partyData.entityData
-    }
-
-val EntityState.growth: EntityGrowth
-    get() = when (this) {
-        is EnemyState -> enemyData.growth
-        is PartyState -> partyData.growth
-    }
-
-val EntityState.rewardTable: EnemyRewardTable?
-    get() = when (this) {
-        is EnemyState -> enemyData.rewardTable
-        is PartyState -> null
+        is EnemyState -> entityData
+        is PartyState -> entityData
     }

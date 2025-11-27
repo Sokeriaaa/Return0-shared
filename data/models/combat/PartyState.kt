@@ -16,7 +16,7 @@ package sokeriaaa.return0.shared.data.models.combat
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import sokeriaaa.return0.shared.data.models.entity.PartyData
+import sokeriaaa.return0.shared.data.models.entity.EntityData
 
 /**
  * The current state of party, uses to start a combat.
@@ -27,7 +27,7 @@ import sokeriaaa.return0.shared.data.models.entity.PartyData
 @Serializable
 @SerialName("PartyState")
 data class PartyState(
-    val partyData: PartyData,
+    val entityData: EntityData,
     val level: Int,
     val currentHP: Int? = null,
     val currentSP: Int? = null,
