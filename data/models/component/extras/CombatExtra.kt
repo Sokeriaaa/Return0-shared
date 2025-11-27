@@ -46,5 +46,5 @@ sealed interface CombatExtra : Extra {
 
     @Serializable
     @SerialName("Combat.RemoveAllEffect")
-    data object RemoveAllEffect : CombatExtra
+    data class RemoveAllEffect(val buff: Boolean = false, val debuff: Boolean = false) : CombatExtra
 }
