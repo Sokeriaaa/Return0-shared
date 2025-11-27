@@ -18,22 +18,13 @@ import kotlinx.serialization.Serializable
 
 /**
  * Effectiveness for damaging entities by an action.
+ *
+ * The maps of [attack] and [defend] present the rate type of category effectiveness.
+ * Key is the category to attack/defend.
+ * Value is the damage offset. Final damage is offset by value * 10%. This value is between -2 and 2.
  */
 @Serializable
 data class CategoryEffectiveness(
-    val attack: List<Rate>,
-    val defend: List<Rate>,
-) {
-    /**
-     * The rate type of category effectiveness.
-     *
-     * @param category2 The category to attack/defend
-     * @param rateType Final damage is offset by [rateType] * 10%.
-     *  This value is between -2 and 2.
-     */
-    @Serializable
-    data class Rate(
-        val category2: Category,
-        val rateType: Int,
-    )
-}
+    val attack: Map<Category, Int>,
+    val defend: Map<Category, Int>,
+)
