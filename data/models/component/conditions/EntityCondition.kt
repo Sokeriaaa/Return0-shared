@@ -38,7 +38,9 @@ sealed interface EntityCondition : Condition {
          */
         @Serializable
         @SerialName("Entity.Categories.HasOneOf")
-        data class HasOneOf(val categories: List<Category>) : Categories
+        data class HasOneOf(val categories: List<Category>) : Categories {
+            constructor(vararg categories: Category) : this(categories.toList())
+        }
     }
 
     @Serializable
