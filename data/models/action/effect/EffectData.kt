@@ -21,6 +21,7 @@ import sokeriaaa.return0.shared.data.models.component.extras.Extra
  * Data class for effect.
  *
  * @param name Name of this effect.
+ * @param abbr The abbreviation of this effect. Can be 2~4 characters.
  * @param isDebuff Whether this effect is a debuff or not.
  * @param isStackable Whether this effect is stackable or not. If not stackable,
  *  when an effect with same name is about to add, firstly keep the one with a higher tier,
@@ -33,6 +34,7 @@ import sokeriaaa.return0.shared.data.models.component.extras.Extra
 @Serializable
 data class EffectData(
     val name: String,
+    val abbr: String,
     val isDebuff: Boolean,
     val isStackable: Boolean = false,
     val isRemovable: Boolean = true,
