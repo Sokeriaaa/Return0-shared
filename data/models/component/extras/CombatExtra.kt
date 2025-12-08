@@ -26,7 +26,7 @@ import sokeriaaa.return0.shared.data.models.component.values.Value
 sealed interface CombatExtra : Extra {
     @Serializable
     @SerialName("Combat.HPChange")
-    data class HPChange(val hpChange: Value) : CombatExtra
+    data class HPChange(val hpChange: Value, val ignoresShield: Boolean = false) : CombatExtra
 
     @Serializable
     @SerialName("Combat.SPChange")
@@ -47,4 +47,20 @@ sealed interface CombatExtra : Extra {
     @Serializable
     @SerialName("Combat.RemoveAllEffect")
     data class RemoveAllEffect(val buff: Boolean = false, val debuff: Boolean = false) : CombatExtra
+
+    @Serializable
+    @SerialName("Combat.AttachShield")
+    data class AttachShield(
+        val key: String,
+        val value: Value,
+        val turns: Value? = null,
+    ) : CombatExtra
+
+    @Serializable
+    @SerialName("Combat.RemoveShield")
+    data class RemoveShield(val key: String) : CombatExtra
+
+    @Serializable
+    @SerialName("Combat.RemoveAllShields")
+    data object RemoveAllShields : CombatExtra
 }

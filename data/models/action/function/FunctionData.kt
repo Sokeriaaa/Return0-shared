@@ -15,6 +15,7 @@
 package sokeriaaa.return0.shared.data.models.action.function
 
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.extras.Extra
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.entity.category.Category
@@ -71,6 +72,8 @@ data class FunctionData(
      * @param userBaseATKOverride Overrides user's baseATK when calculating damage.
      * @param targetBaseDEFOverride Overrides target's baseDEF when calculating damage.
      *  No effect for healing.
+     * @param ignoresShields Ignores the shields of target when attacking under specified condition.
+     *  No effect for healing.
      */
     @Serializable
     data class AttackModifier(
@@ -81,5 +84,6 @@ data class FunctionData(
         val criticalDMGOffset: Value? = null,
         val userBaseATKOverride: Value? = null,
         val targetBaseDEFOverride: Value? = null,
+        val ignoresShields: Condition? = null
     )
 }

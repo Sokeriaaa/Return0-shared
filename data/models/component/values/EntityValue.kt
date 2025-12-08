@@ -118,4 +118,18 @@ sealed interface EntityValue : Value {
     @Serializable
     @SerialName("Entity.TurnsLeftOfAllEffects")
     data object TurnsLeftOfAllEffects : EntityValue
+
+    /**
+     * The remaining value of the shields with the specified key.
+     */
+    @Serializable
+    @SerialName("Entity.ShieldValueOf")
+    data class ShieldValueOf(val key: String) : EntityValue
+
+    /**
+     * The remaining value of all the shields.
+     */
+    @Serializable
+    @SerialName("Entity.SumOfShieldValue")
+    data object SumOfShieldValue : EntityValue
 }

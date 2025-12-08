@@ -62,6 +62,24 @@ sealed interface EntityCondition : Condition {
     }
 
     @Serializable
+    @SerialName("Entity.Shields")
+    sealed interface Shields : EntityCondition {
+        /**
+         * The target has the shield with the [key].
+         */
+        @Serializable
+        @SerialName("Entity.Shields.Has")
+        data class Has(val key: String) : Effects
+
+        /**
+         * The target has any shields.
+         */
+        @Serializable
+        @SerialName("Entity.Shields.HasAny")
+        data object HasAny : Effects
+    }
+
+    @Serializable
     @SerialName("Entity.Status")
     sealed interface Status : EntityCondition {
         /**

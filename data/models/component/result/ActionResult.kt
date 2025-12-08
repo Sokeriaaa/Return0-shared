@@ -41,7 +41,8 @@ sealed interface ActionResult {
     /**
      * Damage
      *
-     * @param finalDamage The final damage target took.
+     * @param finalDamage The final damage target took. (Include the damage nullified by shields.)
+     * @param shieldedDamage Damage nullified by the shields.
      * @param damageCoerced Final damage coerced at most for target's HP before taking damage.
      * @param effectiveness Effectiveness for categories, generally -2~2. strong +1, weak -1.
      * @param isCritical Whether this attack is critical or not.
@@ -52,6 +53,7 @@ sealed interface ActionResult {
         override val fromIndex: Int,
         override val toIndex: Int,
         val finalDamage: Int,
+        val shieldedDamage: Int,
         val damageCoerced: Int,
         val effectiveness: Int,
         val isCritical: Boolean,
@@ -131,6 +133,34 @@ sealed interface ActionResult {
         override val toIndex: Int,
         val originalIndex: Int,
         val effectName: String,
+    ) : ActionResult {
+        override fun isValid(): Boolean = true
+    }
+
+    /**
+     * Attached/Overrode a shield to target.
+     */
+    @Serializable
+    @SerialName("AttachShield")
+    data class AttachShield(
+        override val fromIndex: Int,
+        override val toIndex: Int,
+        val key: String,
+        val value: Int,
+        val turns: Int? = null,
+    ) : ActionResult {
+        override fun isValid(): Boolean = value > 0
+    }
+
+    /**
+     * Removed a shield from target.
+     */
+    @Serializable
+    @SerialName("RemoveShield")
+    data class RemoveShield(
+        override val fromIndex: Int,
+        override val toIndex: Int,
+        val key: String,
     ) : ActionResult {
         override fun isValid(): Boolean = true
     }

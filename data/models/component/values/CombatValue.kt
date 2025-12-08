@@ -37,4 +37,13 @@ sealed interface CombatValue : Value {
     @Serializable
     @SerialName("Combat.DamageCoerced")
     data object DamageCoerced : CombatValue
+
+    /**
+     * Returns the damage nullified by shields.
+     *
+     * Has no effect in a context without a damage result (always returns 0.)
+     */
+    @Serializable
+    @SerialName("Combat.ShieldedDamage")
+    data object ShieldedDamage : CombatValue
 }
