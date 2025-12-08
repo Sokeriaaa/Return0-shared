@@ -69,14 +69,14 @@ sealed interface EntityCondition : Condition {
          */
         @Serializable
         @SerialName("Entity.Shields.Has")
-        data class Has(val key: String) : Effects
+        data class Has(val key: String) : Shields
 
         /**
          * The target has any shields.
          */
         @Serializable
         @SerialName("Entity.Shields.HasAny")
-        data object HasAny : Effects
+        data object HasAny : Shields
     }
 
     @Serializable
