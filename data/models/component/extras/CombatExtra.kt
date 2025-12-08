@@ -64,4 +64,11 @@ sealed interface CombatExtra : Extra {
     @Serializable
     @SerialName("Combat.RemoveAllShields")
     data object RemoveAllShields : CombatExtra
+
+    /**
+     * Simply display a "No effect" log.
+     */
+    @Serializable
+    @SerialName("Combat.NoEffect")
+    data object NoEffect : CombatExtra
 }
