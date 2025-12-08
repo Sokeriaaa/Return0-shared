@@ -16,6 +16,7 @@ package sokeriaaa.return0.shared.data.models.component.extras
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
 /**
@@ -26,7 +27,7 @@ import sokeriaaa.return0.shared.data.models.component.values.Value
 sealed interface CombatExtra : Extra {
     @Serializable
     @SerialName("Combat.HPChange")
-    data class HPChange(val hpChange: Value, val ignoresShield: Boolean = false) : CombatExtra
+    data class HPChange(val hpChange: Value, val ignoresShield: Condition? = null) : CombatExtra
 
     @Serializable
     @SerialName("Combat.SPChange")
