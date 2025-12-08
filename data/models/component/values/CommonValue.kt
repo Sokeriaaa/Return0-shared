@@ -121,6 +121,22 @@ sealed interface CommonValue : Value {
     ) : CommonValue
 
     /**
+     * Calculate the [value] on the **user** of action.
+     */
+    @ConsistentCopyVisibility
+    @Serializable
+    @SerialName("Common.ForUser")
+    data class ForUser internal constructor(val value: Value) : CommonValue
+
+    /**
+     * Calculate the [value] but with **the user and the target swapped**.
+     */
+    @ConsistentCopyVisibility
+    @Serializable
+    @SerialName("Common.Swapped")
+    data class Swapped internal constructor(val value: Value) : CommonValue
+
+    /**
      * Load a value in the action saved by
      *  [sokeriaaa.return0.shared.data.models.component.extras.CommonExtra.SaveValue].
      *
