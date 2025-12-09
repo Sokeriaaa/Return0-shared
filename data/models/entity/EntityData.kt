@@ -18,6 +18,7 @@ import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.action.function.FunctionData
 import sokeriaaa.return0.shared.data.models.action.function.FunctionTarget
 import sokeriaaa.return0.shared.data.models.entity.category.Category
+import sokeriaaa.return0.shared.data.models.entity.path.EntityPath
 
 /**
  * Entity data class.
@@ -31,6 +32,7 @@ import sokeriaaa.return0.shared.data.models.entity.category.Category
 @Serializable
 data class EntityData(
     val name: String,
+    val path: EntityPath,
     val category: Category,
     val category2: Category? = null,
     val baseATK: Int,
