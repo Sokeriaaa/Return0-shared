@@ -21,7 +21,22 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class ArenaConfig(
+    val mode: Mode,
     val parties: List<PartyState>,
     val enemies: List<EnemyState>,
     // TODO to add a event list here.
-)
+) {
+
+    @Serializable
+    enum class Mode {
+        /**
+         * Common combat in the game progress.
+         */
+        COMMON,
+
+        /**
+         * Emulator mode for experimental proposes.
+         */
+        EMULATOR,
+    }
+}
