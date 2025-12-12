@@ -17,21 +17,18 @@ package sokeriaaa.return0.shared.data.models.title
 import kotlinx.serialization.Serializable
 
 /**
- * User title.
+ * User title. (World level)
  */
 @Serializable
 enum class Title {
-    NOOB,
-    BEGINNER,
-    TRAINEE,
+    INTERN,
     JUNIOR,
     MID_LEVEL,
     SENIOR,
-    FULL_STACK,
-    LEADER,
+    LEAD,
     STAFF,
     PRINCIPAL,
-    EXPERT,
-    PROFESSIONAL,
-    SUPER_STAR,
+    THREAD_BINDER,
+    GRAND_COMPILER,
+    THE_SOURCE,
 }
