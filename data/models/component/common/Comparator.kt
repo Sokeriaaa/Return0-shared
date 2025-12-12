@@ -14,9 +14,12 @@
  */
 package sokeriaaa.return0.shared.data.models.component.common
 
+import kotlinx.serialization.Serializable
+
 /**
  * Common comparator for components.
  */
+@Serializable
 enum class Comparator {
     /**
      * Greater
@@ -47,4 +50,37 @@ enum class Comparator {
      * Not equals
      */
     NEQ,
+    ;
+
+    fun compare(value1: Float, value2: Float): Boolean {
+        return when (this) {
+            GT -> value1 > value2
+            GTEQ -> value1 >= value2
+            LT -> value1 < value2
+            LTEQ -> value1 <= value2
+            EQ -> value1 == value2
+            NEQ -> value1 != value2
+        }
+    }
+
+    fun compare(value1: Int, value2: Int): Boolean {
+        return when (this) {
+            GT -> value1 > value2
+            GTEQ -> value1 >= value2
+            LT -> value1 < value2
+            LTEQ -> value1 <= value2
+            EQ -> value1 == value2
+            NEQ -> value1 != value2
+        }
+    }
+
+    companion object {
+        // Alias
+        val GREATER = GT
+        val GREATER_EQUAL = GTEQ
+        val LESS = LT
+        val LESS_EQUAL = LTEQ
+        val EQUALS = EQ
+        val NOT_EQUALS = NEQ
+    }
 }

@@ -17,6 +17,7 @@ package sokeriaaa.return0.shared.data.models.component.conditions
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.api.component.value.Value
+import sokeriaaa.return0.shared.data.models.component.common.Comparator
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
 @Serializable
@@ -51,12 +52,24 @@ sealed interface CommonCondition : Condition {
     /**
      * Succeed when [value1] greater (or equal) than [value2].
      */
+    @Deprecated("Use CompareValues instead. Will be removed in future.")
     @Serializable
     @SerialName("Common.Compare")
     data class Compare(
         val value1: Value,
         val value2: Value,
         val isIncludeEquals: Boolean,
+    ) : CommonCondition
+
+    /**
+     * Compare [value1] and [value2] with the [comparator]
+     */
+    @Serializable
+    @SerialName("Common.CompareValues")
+    data class CompareValues(
+        val value1: Value,
+        val comparator: Comparator,
+        val value2: Value,
     ) : CommonCondition
 
     /**

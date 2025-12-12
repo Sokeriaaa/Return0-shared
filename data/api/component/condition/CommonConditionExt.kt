@@ -15,6 +15,7 @@
 package sokeriaaa.return0.shared.data.api.component.condition
 
 import sokeriaaa.return0.shared.data.api.component.value.Value
+import sokeriaaa.return0.shared.data.models.component.common.Comparator
 import sokeriaaa.return0.shared.data.models.component.conditions.CommonCondition
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
@@ -27,37 +28,55 @@ infix fun Condition.or(condition2: Condition): Condition = CommonCondition.Or(th
 operator fun Condition.not() = CommonCondition.Not(this)
 
 infix fun Value.gt(value2: Value): Condition =
-    CommonCondition.Compare(this, value2, isIncludeEquals = false)
+    CommonCondition.CompareValues(this, Comparator.GT, value2)
 
 infix fun Value.gt(value2: Int): Condition =
-    CommonCondition.Compare(this, Value(value2), isIncludeEquals = false)
+    CommonCondition.CompareValues(this, Comparator.GT, Value(value2))
 
 infix fun Value.gt(value2: Float): Condition =
-    CommonCondition.Compare(this, Value(value2), isIncludeEquals = false)
+    CommonCondition.CompareValues(this, Comparator.GT, Value(value2))
 
 infix fun Value.lt(value2: Value): Condition =
-    CommonCondition.Compare(value2, this, isIncludeEquals = false)
+    CommonCondition.CompareValues(this, Comparator.LT, value2)
 
 infix fun Value.lt(value2: Int): Condition =
-    CommonCondition.Compare(Value(value2), this, isIncludeEquals = false)
+    CommonCondition.CompareValues(this, Comparator.LT, Value(value2))
 
 infix fun Value.lt(value2: Float): Condition =
-    CommonCondition.Compare(Value(value2), this, isIncludeEquals = false)
+    CommonCondition.CompareValues(this, Comparator.LT, Value(value2))
 
 infix fun Value.gtEq(value2: Value): Condition =
-    CommonCondition.Compare(this, value2, isIncludeEquals = true)
+    CommonCondition.CompareValues(this, Comparator.GTEQ, value2)
 
 infix fun Value.gtEq(value2: Int): Condition =
-    CommonCondition.Compare(this, Value(value2), isIncludeEquals = true)
+    CommonCondition.CompareValues(this, Comparator.GTEQ, Value(value2))
 
 infix fun Value.gtEq(value2: Float): Condition =
-    CommonCondition.Compare(this, Value(value2), isIncludeEquals = true)
+    CommonCondition.CompareValues(this, Comparator.GTEQ, Value(value2))
 
 infix fun Value.ltEq(value2: Value): Condition =
-    CommonCondition.Compare(value2, this, isIncludeEquals = true)
+    CommonCondition.CompareValues(this, Comparator.LTEQ, value2)
 
 infix fun Value.ltEq(value2: Int): Condition =
-    CommonCondition.Compare(Value(value2), this, isIncludeEquals = true)
+    CommonCondition.CompareValues(this, Comparator.LTEQ, Value(value2))
 
 infix fun Value.ltEq(value2: Float): Condition =
-    CommonCondition.Compare(Value(value2), this, isIncludeEquals = true)
+    CommonCondition.CompareValues(this, Comparator.LTEQ, Value(value2))
+
+infix fun Value.eq(value2: Value): Condition =
+    CommonCondition.CompareValues(this, Comparator.EQ, value2)
+
+infix fun Value.eq(value2: Int): Condition =
+    CommonCondition.CompareValues(this, Comparator.EQ, Value(value2))
+
+infix fun Value.eq(value2: Float): Condition =
+    CommonCondition.CompareValues(this, Comparator.EQ, Value(value2))
+
+infix fun Value.neq(value2: Value): Condition =
+    CommonCondition.CompareValues(this, Comparator.NEQ, value2)
+
+infix fun Value.neq(value2: Int): Condition =
+    CommonCondition.CompareValues(this, Comparator.NEQ, Value(value2))
+
+infix fun Value.neq(value2: Float): Condition =
+    CommonCondition.CompareValues(this, Comparator.NEQ, Value(value2))
