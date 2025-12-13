@@ -50,5 +50,13 @@ sealed interface EventCondition {
         val title: Title,
     ) : EventCondition
 
+    /**
+     * Whether the quest with specified key is completed.
+     *
+     * Note that after a completed quest is expired, this will return `false`.
+     */
+    data class QuestCompleted(
+        val key: String,
+    ) : EventCondition
 
 }

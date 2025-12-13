@@ -15,6 +15,7 @@
 package sokeriaaa.return0.shared.data.models.story.event
 
 import sokeriaaa.return0.shared.data.models.combat.ArenaConfig
+import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import sokeriaaa.return0.shared.data.models.story.event.condition.EventCondition
 import sokeriaaa.return0.shared.data.models.story.event.value.EventValue
 
@@ -83,6 +84,36 @@ sealed interface Event {
      */
     data class MoveThisEventTo(
         val lineNumber: EventValue,
+    ) : Event
+
+    /**
+     * Player inventory change.
+     */
+    data class InventoryChange(
+        val inventoryKey: String,
+        val change: EventValue,
+    ) : Event
+
+    /**
+     * Player inventory change.
+     */
+    data class CurrencyChange(
+        val currency: CurrencyType,
+        val change: EventValue,
+    ) : Event
+
+    /**
+     * Claim a quest.
+     */
+    data class ClaimQuest(
+        val key: String
+    ) : Event
+
+    /**
+     * Complete a quest.
+     */
+    data class CompleteQuest(
+        val key: String
     ) : Event
 
     /**
