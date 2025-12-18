@@ -83,7 +83,6 @@ sealed interface Event {
      * Has no effect when this event don't have coordinates.
      */
     data class TeleportThisEventTo(
-        val map: String,
         val lineNumber: EventValue,
     ) : Event
 
