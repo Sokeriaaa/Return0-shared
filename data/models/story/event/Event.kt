@@ -73,7 +73,7 @@ sealed interface Event {
     /**
      * Teleport the user to a specified location.
      */
-    data class MoveUserTo(
+    data class TeleportUserTo(
         val map: String,
         val lineNumber: EventValue,
     ) : Event
@@ -82,7 +82,8 @@ sealed interface Event {
      * Teleport this event to a specified line number.
      * Has no effect when this event don't have coordinates.
      */
-    data class MoveThisEventTo(
+    data class TeleportThisEventTo(
+        val map: String,
         val lineNumber: EventValue,
     ) : Event
 
