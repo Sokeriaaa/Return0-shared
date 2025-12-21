@@ -97,8 +97,8 @@ sealed interface Event {
      * Teleport the user to a specified location.
      */
     @Serializable
-    @SerialName("MoveUserTo")
-    data class MoveUserTo(
+    @SerialName("TeleportUserTo")
+    data class TeleportUserTo(
         val map: String,
         val lineNumber: EventValue,
     ) : Event
@@ -108,8 +108,8 @@ sealed interface Event {
      * Has no effect when this event don't have coordinates.
      */
     @Serializable
-    @SerialName("MoveThisEventTo")
-    data class MoveThisEventTo(
+    @SerialName("TeleportThisEventTo")
+    data class TeleportThisEventTo(
         val lineNumber: EventValue,
     ) : Event
 
