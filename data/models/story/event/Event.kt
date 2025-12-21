@@ -14,6 +14,8 @@
  */
 package sokeriaaa.return0.shared.data.models.story.event
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.combat.ArenaConfig
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import sokeriaaa.return0.shared.data.models.story.event.condition.EventCondition
@@ -22,21 +24,28 @@ import sokeriaaa.return0.shared.data.models.story.event.value.EventValue
 /**
  * Story events.
  */
+@Serializable
 sealed interface Event {
 
     /**
      * An empty event for placeholder.
      */
+    @Serializable
+    @SerialName("Empty")
     data object Empty : Event
 
     /**
      * Execute a list of events one by one.
      */
+    @Serializable
+    @SerialName("Sequence")
     data class Sequence(val events: List<Event>) : Event
 
     /**
      * Conditioned fork.
      */
+    @Serializable
+    @SerialName("Conditioned")
     data class Conditioned(
         val condition: EventCondition,
         val ifTrue: Event = Empty,
@@ -46,17 +55,29 @@ sealed interface Event {
     /**
      * Conversation.
      */
+    @Serializable
+    @SerialName("Text")
     sealed class Text : Event {
         abstract val messageRes: String
 
+        @Serializable
+        @SerialName("Text.Narrator")
         data class Narrator(override val messageRes: String) : Text()
+
+        @Serializable
+        @SerialName("Text.User")
         data class User(override val messageRes: String) : Text()
+
+        @Serializable
+        @SerialName("Text.NPC")
         data class NPC(val nameRes: String, override val messageRes: String) : Text()
     }
 
     /**
      * Ask the user to make a decision.
      */
+    @Serializable
+    @SerialName("Choice")
     data class Choice(
         val items: List<Pair<String, Event>>,
     ) : Event
@@ -64,6 +85,8 @@ sealed interface Event {
     /**
      * Start a combat with certain config.
      */
+    @Serializable
+    @SerialName("Combat")
     data class Combat(
         val config: ArenaConfig,
         val success: Event = Empty,
@@ -73,6 +96,8 @@ sealed interface Event {
     /**
      * Teleport the user to a specified location.
      */
+    @Serializable
+    @SerialName("MoveUserTo")
     data class MoveUserTo(
         val map: String,
         val lineNumber: EventValue,
@@ -82,6 +107,8 @@ sealed interface Event {
      * Teleport this event to a specified line number.
      * Has no effect when this event don't have coordinates.
      */
+    @Serializable
+    @SerialName("MoveThisEventTo")
     data class MoveThisEventTo(
         val lineNumber: EventValue,
     ) : Event
@@ -89,6 +116,8 @@ sealed interface Event {
     /**
      * Player inventory change.
      */
+    @Serializable
+    @SerialName("InventoryChange")
     data class InventoryChange(
         val inventoryKey: String,
         val change: EventValue,
@@ -97,6 +126,8 @@ sealed interface Event {
     /**
      * Player inventory change.
      */
+    @Serializable
+    @SerialName("CurrencyChange")
     data class CurrencyChange(
         val currency: CurrencyType,
         val change: EventValue,
@@ -105,6 +136,8 @@ sealed interface Event {
     /**
      * Claim a quest.
      */
+    @Serializable
+    @SerialName("ClaimQuest")
     data class ClaimQuest(
         val key: String
     ) : Event
@@ -112,6 +145,8 @@ sealed interface Event {
     /**
      * Complete a quest.
      */
+    @Serializable
+    @SerialName("CompleteQuest")
     data class CompleteQuest(
         val key: String
     ) : Event
@@ -119,26 +154,36 @@ sealed interface Event {
     /**
      * Save a boolean value to current save.
      */
+    @Serializable
+    @SerialName("SaveSwitch")
     data class SaveSwitch(val key: String, val switch: EventCondition) : Event
 
     /**
      * Save an int value to current save.
      */
+    @Serializable
+    @SerialName("SaveVariable")
     data class SaveVariable(val key: String, val variable: EventValue) : Event
 
     /**
      * Fully recover all entities in current team.
      */
+    @Serializable
+    @SerialName("RecoverAll")
     data object RecoverAll : Event
 
     /**
      * Ask the user to save current game progress.
      */
+    @Serializable
+    @SerialName("RequestSave")
     data object RequestSave : Event
 
     /**
      * Fail this game. Teleport the user to last checkpoint.
      */
+    @Serializable
+    @SerialName("Failed")
     data object Failed : Event
 
 }

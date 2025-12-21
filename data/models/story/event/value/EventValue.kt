@@ -14,6 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.story.event.value
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 
@@ -25,25 +26,35 @@ sealed interface EventValue {
     /**
      * Constant value.
      */
+    @Serializable
+    @SerialName("Constant")
     data class Constant(val value: Int) : EventValue
 
     /**
      * Returns a random int in the range.
      */
+    @Serializable
+    @SerialName("RandomInt")
     data class RandomInt(val start: Int, val endInclusive: Int) : EventValue
 
     /**
      * Returns a saved value with specified key.
      */
+    @Serializable
+    @SerialName("SavedVariable")
     data class SavedVariable(val key: String, val default: EventValue = Constant(0)) : EventValue
 
     /**
      * Returns the currency user have.
      */
+    @Serializable
+    @SerialName("Currency")
     data class Currency(val type: CurrencyType) : EventValue
 
     /**
      * Returns the current inventory of the specified item.
      */
+    @Serializable
+    @SerialName("Inventory")
     data class Inventory(val key: String) : EventValue
 }

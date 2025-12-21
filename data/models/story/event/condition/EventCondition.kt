@@ -14,6 +14,7 @@
  */
 package sokeriaaa.return0.shared.data.models.story.event.condition
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.common.Comparator
 import sokeriaaa.return0.shared.data.models.story.event.value.EventValue
@@ -25,17 +26,26 @@ import sokeriaaa.return0.shared.data.models.title.Title
 @Serializable
 sealed interface EventCondition {
 
+    @Serializable
+    @SerialName("True")
     data object True : EventCondition
+
+    @Serializable
+    @SerialName("False")
     data object False : EventCondition
 
     /**
      * Read the saved switch.
      */
+    @Serializable
+    @SerialName("SavedSwitch")
     data class SavedSwitch(val key: String, val default: EventCondition = False) : EventCondition
 
     /**
      * Compare two values.
      */
+    @Serializable
+    @SerialName("Compare")
     data class Compare(
         val value1: EventValue,
         val comparator: Comparator,
@@ -45,6 +55,8 @@ sealed interface EventCondition {
     /**
      * Player title.
      */
+    @Serializable
+    @SerialName("PlayerTitle")
     data class PlayerTitle(
         val comparator: Comparator,
         val title: Title,
@@ -55,6 +67,8 @@ sealed interface EventCondition {
      *
      * Note that after a completed quest is expired, this will return `false`.
      */
+    @Serializable
+    @SerialName("QuestCompleted")
     data class QuestCompleted(
         val key: String,
     ) : EventCondition
