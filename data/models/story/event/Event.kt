@@ -39,7 +39,9 @@ sealed interface Event {
      */
     @Serializable
     @SerialName("Sequence")
-    data class Sequence(val events: List<Event>) : Event
+    data class Sequence(val events: List<Event>) : Event {
+        constructor(vararg events: Event) : this(listOf(*events))
+    }
 
     /**
      * Conditioned fork.
@@ -80,7 +82,9 @@ sealed interface Event {
     @SerialName("Choice")
     data class Choice(
         val items: List<Pair<String, Event>>,
-    ) : Event
+    ) : Event {
+        constructor(vararg items: Pair<String, Event>) : this(listOf(*items))
+    }
 
     /**
      * Start a combat with certain config.
