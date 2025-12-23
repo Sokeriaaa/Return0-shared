@@ -101,6 +101,15 @@ sealed interface Event {
      * Teleport the user to a specified location.
      */
     @Serializable
+    @SerialName("MoveUserTo")
+    data class MoveUserTo(
+        val lineNumber: EventValue,
+    ) : Event
+
+    /**
+     * Teleport the user to a specified location.
+     */
+    @Serializable
     @SerialName("TeleportUserTo")
     data class TeleportUserTo(
         val map: String,
