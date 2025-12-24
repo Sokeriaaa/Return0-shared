@@ -34,16 +34,20 @@ data class MapEvent(
     enum class Trigger {
         /**
          * When the user is entering this map.
+         * This event will void if [lineNumber] is not null.
          */
         ENTERED,
 
         /**
          * When the user moved to the same line of this event.
+         * Not be triggered if the player is moving by an event.
+         * This event will void if [lineNumber] is null.
          */
         OVERLAPPED,
 
         /**
          * When the user interacted with this event.
+         * This event will void if [lineNumber] is null.
          */
         INTERACTED,
     }
