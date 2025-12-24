@@ -16,7 +16,6 @@ package sokeriaaa.return0.shared.data.models.story.event
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import sokeriaaa.return0.shared.data.models.combat.ArenaConfig
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import sokeriaaa.return0.shared.data.models.story.event.condition.EventCondition
 import sokeriaaa.return0.shared.data.models.story.event.value.EventValue
@@ -92,10 +91,56 @@ sealed interface Event {
     @Serializable
     @SerialName("Combat")
     data class Combat(
-        val config: ArenaConfig,
+        val config: Config,
         val success: Event = Empty,
         val failure: Event = Failed,
-    ) : Event
+    ) : Event {
+        /**
+         * Combat config.
+         *
+         * @param enemies Enemies the player will fight with in this combat. Entity name to level.
+         * @param additionalParties Additional parties in this combat. Will replace user's team
+         *                          from index #3 to #0. If the entity with a higher level is
+         *                          already exists in the user's own team, use the user's entity
+         *                          instead.
+         * @param useOnlyAdditional Use only the [additionalParties] without any user's own
+         *                          entities. The [additionalParties] must not be empty when this
+         *                          flag is `true`, or the combat will fail immediately when it's
+         *                          started.
+         * @param statusOverride Overrides the status of parties before combat starts. The key is
+         *                       entity name.
+         *                       When the map itself is null, it means this combat will use the
+         *                       current status of entities, and the HP/SP will be saved after the
+         *                       combat is finished and used for the next combat. It's a normal
+         *                       combat.
+         *                       if the map is not null, it means this is a special combat. Status
+         *                       will not be saved to the database after the combat ended. Entity
+         *                       status will be overridden temporary during this combat. If a key
+         *                       for the entity doesn't exists, use the default value of
+         *                       [EntityOverride].
+         */
+        @Serializable
+        data class Config(
+            val enemies: List<Pair<String, EventValue>>,
+            val additionalParties: List<Pair<String, EventValue>> = emptyList(),
+            val useOnlyAdditional: Boolean = false,
+            val statusOverride: Map<String, StatusOverride>? = null,
+        ) {
+            /**
+             * Override the entity status for this combat temporary.
+             *
+             * @param hp Overrode HP. Default is null, presents full HP.
+             * @param sp Overrode SP. Default is null, presents full SP.
+             * @param level Overrode level. Default is null, presents current level.
+             */
+            @Serializable
+            data class StatusOverride(
+                val hp: EventValue? = null,
+                val sp: EventValue? = null,
+                val level: EventValue? = null,
+            )
+        }
+    }
 
     /**
      * Teleport the user to a specified location.

@@ -18,12 +18,18 @@ import kotlinx.serialization.Serializable
 
 /**
  * Arena config, uses to start a combat.
+ *
+ * @param saveStatus The entity status after the combat should be saved.
+ * @param temporaryEntities Temporary parties in this combat. If [saveStatus] is true, their status
+ *                          should not be saved.
  */
 @Serializable
 data class ArenaConfig(
     val mode: Mode,
+    val saveStatus: Boolean,
     val parties: List<PartyState>,
     val enemies: List<EnemyState>,
+    val temporaryEntities: Set<String> = emptySet(),
     // TODO to add a event list here.
 ) {
 
