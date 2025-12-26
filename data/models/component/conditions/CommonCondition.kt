@@ -22,7 +22,7 @@ import sokeriaaa.return0.shared.data.models.component.values.Value
 
 @Serializable
 @SerialName("Common")
-sealed interface CommonCondition : Condition {
+sealed interface CommonCondition : Condition.Combat, Condition.Event {
 
     /**
      * Simple "AND" condition.

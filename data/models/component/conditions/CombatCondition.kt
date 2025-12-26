@@ -19,7 +19,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("Combat")
-sealed interface CombatCondition : Condition {
+sealed interface CombatCondition : Condition.Combat {
     /**
      * Whether the damage is a critical hit.
      *

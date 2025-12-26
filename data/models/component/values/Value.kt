@@ -20,4 +20,18 @@ import kotlinx.serialization.Serializable
  * A value class being calculated during the combat.
  */
 @Serializable
-sealed interface Value
+sealed interface Value {
+
+    /**
+     * This value is applicable for the combats.
+     */
+    @Serializable
+    sealed interface Combat : Value
+
+    /**
+     * This value is applicable for the events.
+     */
+    @Serializable
+    sealed interface Event : Value
+
+}

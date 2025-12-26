@@ -12,50 +12,33 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see <https://www.gnu.org/licenses/>.
  */
-package sokeriaaa.return0.shared.data.models.story.event.value
+package sokeriaaa.return0.shared.data.models.component.values
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.api.component.value.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 
-/**
- * Value components for events.
- */
-@Serializable
-@Deprecated("Unified with the combat values.")
-sealed interface EventValue {
-    /**
-     * Constant value.
-     */
-    @Serializable
-    @SerialName("Constant")
-    data class Constant(val value: Int) : EventValue
-
-    /**
-     * Returns a random int in the range.
-     */
-    @Serializable
-    @SerialName("RandomInt")
-    data class RandomInt(val start: Int, val endInclusive: Int) : EventValue
+sealed interface EventValue : Value.Event {
 
     /**
      * Returns a saved value with specified key.
      */
     @Serializable
-    @SerialName("SavedVariable")
-    data class SavedVariable(val key: String, val default: EventValue = Constant(0)) : EventValue
+    @SerialName("Event.SavedVariable")
+    data class SavedVariable(val key: String, val default: Value.Event = Value(0)) : EventValue
 
     /**
      * Returns the currency user have.
      */
     @Serializable
-    @SerialName("Currency")
+    @SerialName("Event.Currency")
     data class Currency(val type: CurrencyType) : EventValue
 
     /**
      * Returns the current inventory of the specified item.
      */
     @Serializable
-    @SerialName("Inventory")
+    @SerialName("Event.Inventory")
     data class Inventory(val key: String) : EventValue
 }

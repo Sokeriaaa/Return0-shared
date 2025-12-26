@@ -19,7 +19,37 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("Combat")
-sealed interface CombatValue : Value {
+sealed interface CombatValue : Value.Combat {
+    /**
+     * Calculate the [value] on the **user** of action.
+     */
+    @ConsistentCopyVisibility
+    @Serializable
+    @SerialName("Combat.ForUser")
+    data class ForUser internal constructor(val value: Value.Combat) : CombatValue
+
+    /**
+     * Calculate the [value] but with **the user and the target swapped**.
+     */
+    @ConsistentCopyVisibility
+    @Serializable
+    @SerialName("Combat.Swapped")
+    data class Swapped internal constructor(val value: Value.Combat) : CombatValue
+
+    /**
+     * Load a value in the action saved by
+     *  [sokeriaaa.return0.shared.data.models.component.extras.CommonExtra.SaveValue].
+     *
+     * @see sokeriaaa.return0.shared.data.models.component.extras.CommonExtra.SaveValue
+     * @see sokeriaaa.return0.models.action.Action.values
+     */
+    @Serializable
+    @SerialName("Combat.LoadValue")
+    data class LoadValue(
+        val key: String,
+        val defaultValue: Value.Combat? = null,
+    ) : CombatValue
+
     /**
      * Returns the damage for the attack.
      *

@@ -65,7 +65,7 @@ sealed interface CommonExtra : Extra {
      */
     @Serializable
     @SerialName("Common.SaveValue")
-    data class SaveValue(val key: String, val value: Value) : CommonExtra
+    data class SaveValue(val key: String, val value: Value.Combat) : CommonExtra
 
     /**
      * Execute [extra] on the **user** of action.
