@@ -16,9 +16,9 @@ package sokeriaaa.return0.shared.data.models.story.event
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.models.component.conditions.Condition
+import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
-import sokeriaaa.return0.shared.data.models.story.event.condition.EventCondition
-import sokeriaaa.return0.shared.data.models.story.event.value.EventValue
 
 /**
  * Story events.
@@ -48,7 +48,7 @@ sealed interface Event {
     @Serializable
     @SerialName("Conditioned")
     data class Conditioned(
-        val condition: EventCondition,
+        val condition: Condition.Event,
         val ifTrue: Event = Empty,
         val ifFalse: Event = Empty,
     ) : Event
@@ -121,8 +121,8 @@ sealed interface Event {
          */
         @Serializable
         data class Config(
-            val enemies: List<Pair<String, EventValue>>,
-            val additionalParties: List<Pair<String, EventValue>> = emptyList(),
+            val enemies: List<Pair<String, Value.Event>>,
+            val additionalParties: List<Pair<String, Value.Event>> = emptyList(),
             val useOnlyAdditional: Boolean = false,
             val statusOverride: Map<String, StatusOverride>? = null,
         ) {
@@ -135,9 +135,9 @@ sealed interface Event {
              */
             @Serializable
             data class StatusOverride(
-                val hp: EventValue? = null,
-                val sp: EventValue? = null,
-                val level: EventValue? = null,
+                val hp: Value.Event? = null,
+                val sp: Value.Event? = null,
+                val level: Value.Event? = null,
             )
         }
     }
@@ -148,7 +148,7 @@ sealed interface Event {
     @Serializable
     @SerialName("MoveUserTo")
     data class MoveUserTo(
-        val lineNumber: EventValue,
+        val lineNumber: Value.Event,
     ) : Event
 
     /**
@@ -158,7 +158,7 @@ sealed interface Event {
     @SerialName("TeleportUserTo")
     data class TeleportUserTo(
         val map: String,
-        val lineNumber: EventValue,
+        val lineNumber: Value.Event,
     ) : Event
 
     /**
@@ -168,7 +168,7 @@ sealed interface Event {
     @Serializable
     @SerialName("TeleportThisEventTo")
     data class TeleportThisEventTo(
-        val lineNumber: EventValue,
+        val lineNumber: Value.Event,
     ) : Event
 
     /**
@@ -178,7 +178,7 @@ sealed interface Event {
     @SerialName("InventoryChange")
     data class InventoryChange(
         val inventoryKey: String,
-        val change: EventValue,
+        val change: Value.Event,
     ) : Event
 
     /**
@@ -188,7 +188,7 @@ sealed interface Event {
     @SerialName("CurrencyChange")
     data class CurrencyChange(
         val currency: CurrencyType,
-        val change: EventValue,
+        val change: Value.Event,
     ) : Event
 
     /**
@@ -214,14 +214,14 @@ sealed interface Event {
      */
     @Serializable
     @SerialName("SaveSwitch")
-    data class SaveSwitch(val key: String, val switch: EventCondition) : Event
+    data class SaveSwitch(val key: String, val switch: Condition.Event) : Event
 
     /**
      * Save an int value to current save.
      */
     @Serializable
     @SerialName("SaveVariable")
-    data class SaveVariable(val key: String, val variable: EventValue) : Event
+    data class SaveVariable(val key: String, val variable: Value.Event) : Event
 
     /**
      * Fully recover all entities in current team.

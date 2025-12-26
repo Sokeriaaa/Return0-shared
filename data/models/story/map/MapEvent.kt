@@ -1,8 +1,9 @@
 package sokeriaaa.return0.shared.data.models.story.map
 
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.models.component.conditions.CommonCondition
+import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.story.event.Event
-import sokeriaaa.return0.shared.data.models.story.event.condition.EventCondition
 
 /**
  * An event or NPC on the map.
@@ -19,12 +20,12 @@ import sokeriaaa.return0.shared.data.models.story.event.condition.EventCondition
  */
 @Serializable
 data class MapEvent(
-    val enabled: EventCondition,
+    val enabled: Condition.Event,
     val key: String? = null,
     val trigger: Trigger,
     val lineNumber: Int? = null,
     val display: String? = null,
-    val blocksUser: EventCondition = EventCondition.False,
+    val blocksUser: Condition.Event = CommonCondition.False,
     val event: Event,
 ) {
 
