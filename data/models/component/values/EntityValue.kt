@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 @SerialName("Entity")
-sealed interface EntityValue : Value {
+sealed interface EntityValue : Value.Combat {
     @Serializable
     @SerialName("Entity.ATK")
     data object ATK : EntityValue

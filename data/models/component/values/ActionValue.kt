@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 @SerialName("Action")
-sealed interface ActionValue : Value {
+sealed interface ActionValue : Value.Combat {
 
     @Serializable
     @SerialName("Action.Skills")

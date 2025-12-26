@@ -12,52 +12,30 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see <https://www.gnu.org/licenses/>.
  */
-package sokeriaaa.return0.shared.data.models.story.event.condition
+package sokeriaaa.return0.shared.data.models.component.conditions
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.common.Comparator
-import sokeriaaa.return0.shared.data.models.story.event.value.EventValue
 import sokeriaaa.return0.shared.data.models.title.Title
 
-/**
- * Condition components for events.
- */
-@Serializable
-@Deprecated("Unified with the combat conditions.")
-sealed interface EventCondition {
-
-    @Serializable
-    @SerialName("True")
-    data object True : EventCondition
-
-    @Serializable
-    @SerialName("False")
-    data object False : EventCondition
-
+sealed interface EventCondition : Condition.Event {
     /**
      * Read the saved switch.
      */
     @Serializable
-    @SerialName("SavedSwitch")
-    data class SavedSwitch(val key: String, val default: EventCondition = False) : EventCondition
-
-    /**
-     * Compare two values.
-     */
-    @Serializable
-    @SerialName("Compare")
-    data class Compare(
-        val value1: EventValue,
-        val comparator: Comparator,
-        val value2: EventValue,
+    @SerialName("Event.SavedSwitch")
+    data class SavedSwitch(
+        val key: String,
+        val default: Condition.Event = CommonCondition.False,
     ) : EventCondition
+
 
     /**
      * Player title.
      */
     @Serializable
-    @SerialName("PlayerTitle")
+    @SerialName("Event.PlayerTitle")
     data class PlayerTitle(
         val comparator: Comparator,
         val title: Title,
@@ -69,9 +47,8 @@ sealed interface EventCondition {
      * Note that after a completed quest is expired, this will return `false`.
      */
     @Serializable
-    @SerialName("QuestCompleted")
+    @SerialName("Event.QuestCompleted")
     data class QuestCompleted(
         val key: String,
     ) : EventCondition
-
 }

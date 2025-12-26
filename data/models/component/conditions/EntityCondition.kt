@@ -22,7 +22,7 @@ import sokeriaaa.return0.shared.data.models.entity.category.Category
 
 @Serializable
 @SerialName("Entity")
-sealed interface EntityCondition : Condition {
+sealed interface EntityCondition : Condition.Combat {
 
     @Serializable
     @SerialName("Entity.Categories")
@@ -90,7 +90,7 @@ sealed interface EntityCondition : Condition {
         @Deprecated("Use HPRate and Comparator instead. Will be removed in the future.")
         @Serializable
         @SerialName("Entity.Status.HPLessThan")
-        data class HPLessThan(val rate: Value, val isIncludeEquals: Boolean) : Status
+        data class HPLessThan(val rate: Value.Combat, val isIncludeEquals: Boolean) : Status
 
         /**
          * The target has more HP (or equals to when [isIncludeEquals] == true)
@@ -99,7 +99,7 @@ sealed interface EntityCondition : Condition {
         @Deprecated("Use HPRate and Comparator instead. Will be removed in the future.")
         @Serializable
         @SerialName("Entity.Status.HPMoreThan")
-        data class HPMoreThan(val rate: Value, val isIncludeEquals: Boolean) : Status
+        data class HPMoreThan(val rate: Value.Combat, val isIncludeEquals: Boolean) : Status
 
         /**
          * The target has less SP (or equals to when [isIncludeEquals] == true)
@@ -108,7 +108,7 @@ sealed interface EntityCondition : Condition {
         @Deprecated("Use SPRate and Comparator instead. Will be removed in the future.")
         @Serializable
         @SerialName("Entity.Status.SPLessThan")
-        data class SPLessThan(val rate: Value, val isIncludeEquals: Boolean) : Status
+        data class SPLessThan(val rate: Value.Combat, val isIncludeEquals: Boolean) : Status
 
         /**
          * The target has more HP (or equals to when [isIncludeEquals] == true)
@@ -117,21 +117,21 @@ sealed interface EntityCondition : Condition {
         @Deprecated("Use SPRate and Comparator instead. Will be removed in the future.")
         @Serializable
         @SerialName("Entity.Status.SPMoreThan")
-        data class SPMoreThan(val rate: Value, val isIncludeEquals: Boolean) : Status
+        data class SPMoreThan(val rate: Value.Combat, val isIncludeEquals: Boolean) : Status
 
         /**
          * Compare the current HP of the rate of MAXHP with the specified rate.
          */
         @Serializable
         @SerialName("Entity.Status.HPRate")
-        data class HPRate(val comparator: Comparator, val rate: Value) : Status
+        data class HPRate(val comparator: Comparator, val rate: Value.Combat) : Status
 
         /**
          * Compare the current SP of the rate of MAXSP with the specified rate.
          */
         @Serializable
         @SerialName("Entity.Status.SPRate")
-        data class SPRate(val comparator: Comparator, val rate: Value) : Status
+        data class SPRate(val comparator: Comparator, val rate: Value.Combat) : Status
     }
 
 }

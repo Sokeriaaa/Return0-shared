@@ -20,7 +20,7 @@ import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 
 @Serializable
 @SerialName("Common")
-sealed interface CommonValue : Value {
+sealed interface CommonValue : Value.Combat, Value.Event {
 
     /**
      * A simple constant value. Use [sokeriaaa.return0.shared.data.models.component.values.Value] to create.
@@ -126,6 +126,7 @@ sealed interface CommonValue : Value {
     @ConsistentCopyVisibility
     @Serializable
     @SerialName("Common.ForUser")
+    @Deprecated("Use CombatValue.ForUser instead.")
     data class ForUser internal constructor(val value: Value) : CommonValue
 
     /**
@@ -134,6 +135,7 @@ sealed interface CommonValue : Value {
     @ConsistentCopyVisibility
     @Serializable
     @SerialName("Common.Swapped")
+    @Deprecated("Use CombatValue.Swapped instead.")
     data class Swapped internal constructor(val value: Value) : CommonValue
 
     /**
@@ -145,6 +147,7 @@ sealed interface CommonValue : Value {
      */
     @Serializable
     @SerialName("Common.LoadValue")
+    @Deprecated("Use CombatValue.LoadValue instead.")
     data class LoadValue(
         val key: String,
         val defaultValue: Value? = null,

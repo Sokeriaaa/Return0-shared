@@ -20,4 +20,19 @@ import kotlinx.serialization.Serializable
  * A condition class being calculated during the combat.
  */
 @Serializable
-sealed interface Condition
+sealed interface Condition {
+
+    /**
+     * This condition is applicable for the combats.
+     */
+    @Serializable
+    sealed interface Combat : Condition
+
+
+    /**
+     * This condition is applicable for the events.
+     */
+    @Serializable
+    sealed interface Event : Condition
+
+}
