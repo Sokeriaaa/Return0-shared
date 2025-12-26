@@ -103,17 +103,11 @@ operator fun Value.times(value2: Float) = CommonValue.Math.TimesConst(this, valu
 operator fun Value.times(value2: Value) = CommonValue.Math.Times(this, value2)
 
 operator fun Value.div(value2: Value) = CommonValue.Math.Div(this, value2)
-operator fun Int.div(value2: Value) = CommonValue.Math.Div(
-    Value(this), value2
-)
+operator fun Int.div(value2: Value) = CommonValue.Math.Div(Value(this), value2)
 
 operator fun Value.unaryMinus() = when (this) {
-    is CommonValue.Constant -> Value(
-        -value
-    )
-
+    is CommonValue.Constant -> Value(-value)
     is CommonValue.Math.TimesConst -> CommonValue.Math.TimesConst(this.value1, -this.value2)
-    is CommonValue.Math.UnaryMinus -> this.value1
     else -> CommonValue.Math.UnaryMinus(this)
 }
 
@@ -121,59 +115,33 @@ infix fun Value.shl(bitCount: Value) = CommonValue.Math.Shift(this, bitCount)
 infix fun Value.shr(bitCount: Value) = CommonValue.Math.Shift(this, -bitCount)
 
 val Value.absoluteValue: Value
-    get() = abs(
-        x = this
-    )
+    get() = abs(this)
 
 fun abs(x: Value) = CommonValue.Math.AbsoluteValue(x)
 
 fun Value.coerceAtLeast(minimumValue: Int) =
-    CommonValue.Math.Coerced(
-        this, min = Value(
-            minimumValue
-        )
-    )
+    CommonValue.Math.Coerced(this, min = Value(minimumValue))
 
 fun Value.coerceAtLeast(minimumValue: Float) =
-    CommonValue.Math.Coerced(
-        this, min = Value(
-            minimumValue
-        )
-    )
+    CommonValue.Math.Coerced(this, min = Value(minimumValue))
 
 fun Value.coerceAtLeast(minimumValue: Value) =
     CommonValue.Math.Coerced(this, min = minimumValue)
 
 fun Value.coerceAtMost(maximumValue: Int) =
-    CommonValue.Math.Coerced(
-        this, max = Value(
-            maximumValue
-        )
-    )
+    CommonValue.Math.Coerced(this, max = Value(maximumValue))
 
 fun Value.coerceAtMost(maximumValue: Float) =
-    CommonValue.Math.Coerced(
-        this, max = Value(
-            maximumValue
-        )
-    )
+    CommonValue.Math.Coerced(this, max = Value(maximumValue))
 
 fun Value.coerceAtMost(maximumValue: Value) =
     CommonValue.Math.Coerced(this, max = maximumValue)
 
 fun Value.coerceIn(range: IntRange) =
-    CommonValue.Math.Coerced(
-        this, min = Value(
-            range.first
-        ), max = Value(range.last)
-    )
+    CommonValue.Math.Coerced(this, min = Value(range.first), max = Value(range.last))
 
 fun Value.coerceIn(range: ClosedFloatingPointRange<Float>) =
-    CommonValue.Math.Coerced(
-        this, min = Value(
-            range.start
-        ), max = Value(range.endInclusive)
-    )
+    CommonValue.Math.Coerced(this, min = Value(range.start), max = Value(range.endInclusive))
 
 fun minOf(vararg values: Value) = CommonValue.Math.MinOf(values.asList())
 fun maxOf(vararg values: Value) = CommonValue.Math.MaxOf(values.asList())
