@@ -50,18 +50,6 @@ sealed interface CommonCondition : Condition.Combat, Condition.Event {
     data class Not(val condition: Condition) : CommonCondition
 
     /**
-     * Succeed when [value1] greater (or equal) than [value2].
-     */
-    @Deprecated("Use CompareValues instead. Will be removed in future.")
-    @Serializable
-    @SerialName("Common.Compare")
-    data class Compare(
-        val value1: Value,
-        val value2: Value,
-        val isIncludeEquals: Boolean,
-    ) : CommonCondition
-
-    /**
      * Compare [value1] and [value2] with the [comparator]
      */
     @Serializable
