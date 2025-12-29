@@ -224,6 +224,28 @@ sealed interface Event {
     data class SaveVariable(val key: String, val variable: Value.Event) : Event
 
     /**
+     * Show the map again after being hidden by [HideMap].
+     */
+    @Serializable
+    @SerialName("ShowMap")
+    data object ShowMap : Event
+
+    /**
+     * Hide the map display during this event. The map will display automatically after the parent
+     *  event is finished.
+     */
+    @Serializable
+    @SerialName("HideMap")
+    data object HideMap : Event
+
+    /**
+     * One shot effect to shake the map.
+     */
+    @Serializable
+    @SerialName("ShakeMap")
+    data object ShakeMap : Event
+
+    /**
      * Fully recover all entities in current team.
      */
     @Serializable
