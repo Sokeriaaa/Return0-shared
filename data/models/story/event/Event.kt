@@ -17,6 +17,7 @@ package sokeriaaa.return0.shared.data.models.story.event
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
+import sokeriaaa.return0.shared.data.models.component.extras.Extra
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 
@@ -256,6 +257,22 @@ sealed interface Event {
     data object RecoverAll : Event
 
     /**
+     * Mainly used by items.
+     *
+     * Notify the user to choose an entity for applying the extras. A special [ActionExtraContext]
+     * will be used here, which currently only allows the basic HP/SP change to the target, other
+     * extras which affects the states that don't save to the database will take no effect.
+     *
+     * [onCanceled] will be executed if [extra] is null or user canceled the selection.
+     */
+    @Serializable
+    @SerialName("ExecuteExtra")
+    data class ExecuteExtra(
+        val extra: Extra?,
+        val onCanceled: Event = RefuseToUse(),
+    ) : Event
+
+    /**
      * Ask the user to save current game progress.
      */
     @Serializable
@@ -269,4 +286,10 @@ sealed interface Event {
     @SerialName("Failed")
     data object Failed : Event
 
+    /**
+     * Can only used by items. Throws an exception to interrupt the usage of item.
+     */
+    @Serializable
+    @SerialName("RefuseToUse")
+    data class RefuseToUse(val reasonRes: String? = null) : Event
 }
