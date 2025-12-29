@@ -99,6 +99,8 @@ sealed interface Event {
          * Combat config.
          *
          * @param enemies Enemies the player will fight with in this combat. Entity name to level.
+         * @param difficulty Difficulty modifier for this combat. Affects the EXP and token
+         *                   rewards after winning the combat.
          * @param additionalParties Additional parties in this combat. Will replace user's team
          *                          from index #3 to #0. If the entity with a higher level is
          *                          already exists in the user's own team, use the user's entity
@@ -122,6 +124,7 @@ sealed interface Event {
         @Serializable
         data class Config(
             val enemies: List<Pair<String, Value.Event>>,
+            val difficulty: Float = 1F,
             val additionalParties: List<Pair<String, Value.Event>> = emptyList(),
             val useOnlyAdditional: Boolean = false,
             val statusOverride: Map<String, StatusOverride>? = null,
