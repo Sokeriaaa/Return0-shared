@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 @SerialName("Entity")
-sealed interface EntityValue : Value.Combat {
+sealed interface EntityValue : Value.Combat, Value.Item {
     @Serializable
     @SerialName("Entity.ATK")
     data object ATK : EntityValue
@@ -107,6 +107,8 @@ sealed interface EntityValue : Value.Combat {
      * The turns left of the effects with a specified name.
      *
      * If the effect is stackable, the return value will be the sum of all stacked effects.
+     *
+     * Not applicable for the items (always return 0)
      */
     @Serializable
     @SerialName("Entity.TurnsLeftOf")
@@ -114,6 +116,8 @@ sealed interface EntityValue : Value.Combat {
 
     /**
      * Returns the total number of turns across all effects.
+     *
+     * Not applicable for the items (always return 0)
      */
     @Serializable
     @SerialName("Entity.TurnsLeftOfAllEffects")
@@ -121,6 +125,8 @@ sealed interface EntityValue : Value.Combat {
 
     /**
      * The remaining value of the shields with the specified key.
+     *
+     * Not applicable for the items (always return 0)
      */
     @Serializable
     @SerialName("Entity.ShieldValueOf")
@@ -128,6 +134,8 @@ sealed interface EntityValue : Value.Combat {
 
     /**
      * The remaining value of all the shields.
+     *
+     * Not applicable for the items (always return 0)
      */
     @Serializable
     @SerialName("Entity.SumOfShieldValue")

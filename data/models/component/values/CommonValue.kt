@@ -20,7 +20,7 @@ import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 
 @Serializable
 @SerialName("Common")
-sealed interface CommonValue : Value.Combat, Value.Event {
+sealed interface CommonValue : Value.Combat, Value.Event, Value.Item {
 
     /**
      * A simple constant value. Use [sokeriaaa.return0.shared.data.models.component.values.Value] to create.

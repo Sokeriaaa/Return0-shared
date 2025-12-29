@@ -35,4 +35,10 @@ sealed interface Condition {
     @Serializable
     sealed interface Event : Condition
 
+    /**
+     * This condition is applicable for the items.
+     */
+    @Serializable
+    sealed interface Item : Condition
+
 }

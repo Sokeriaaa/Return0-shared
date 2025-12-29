@@ -34,4 +34,10 @@ sealed interface Value {
     @Serializable
     sealed interface Event : Value
 
+    /**
+     * This value is applicable for the items.
+     */
+    @Serializable
+    sealed interface Item : Value
+
 }

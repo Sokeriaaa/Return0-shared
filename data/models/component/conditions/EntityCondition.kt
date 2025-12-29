@@ -82,7 +82,7 @@ sealed interface EntityCondition : Condition.Combat {
 
     @Serializable
     @SerialName("Entity.Status")
-    sealed interface Status : EntityCondition {
+    sealed interface Status : EntityCondition, Condition.Item {
         /**
          * Compare the current HP of the rate of MAXHP with the specified rate.
          */
@@ -96,6 +96,13 @@ sealed interface EntityCondition : Condition.Combat {
         @Serializable
         @SerialName("Entity.Status.SPRate")
         data class SPRate(val comparator: Comparator, val rate: Value.Combat) : Status
+
+        /**
+         * Whether this entity is failed (hp == 0)
+         */
+        @Serializable
+        @SerialName("Entity.Status.IsFailed")
+        data object IsFailed : Status
     }
 
 }
