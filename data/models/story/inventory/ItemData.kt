@@ -33,6 +33,7 @@ data class ItemData(
     val key: String,
     val nameRes: String,
     val descriptionRes: String,
+    val rarity: Rarity,
     val types: List<Type>,
     val isConsumedAfterUse: Boolean = true,
     val useInCombat: Extra? = null,
@@ -44,6 +45,14 @@ data class ItemData(
         MATERIAL,
         QUEST,
         OTHER,
+    }
+
+    enum class Rarity {
+        COMMON,
+        UNCOMMON,
+        RARE,
+        EPIC,
+        LEGENDARY,
     }
 
 }
