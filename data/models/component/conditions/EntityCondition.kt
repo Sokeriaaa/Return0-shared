@@ -26,7 +26,7 @@ sealed interface EntityCondition : Condition.Combat {
 
     @Serializable
     @SerialName("Entity.Categories")
-    sealed interface Categories : EntityCondition {
+    sealed interface Categories : EntityCondition, Condition.Item {
         /**
          * The target has the [category].
          */

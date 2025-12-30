@@ -20,4 +20,18 @@ import kotlinx.serialization.Serializable
  * Extras being executed after a successful action.
  */
 @Serializable
-sealed interface Extra
+sealed interface Extra {
+    /**
+     * This extra is applicable for the combat.
+     */
+    @Serializable
+    sealed interface Combat : Extra
+
+    /**
+     * This extra is applicable for the item usages outside a combat.
+     *
+     * During a combat, the item will be executed as an action and [Combat] is used.
+     */
+    @Serializable
+    sealed interface Item : Extra
+}

@@ -21,7 +21,7 @@ import sokeriaaa.return0.shared.data.models.component.values.Value
 
 @Serializable
 @SerialName("Common")
-sealed interface CommonExtra : Extra {
+sealed interface CommonExtra : Extra.Combat, Extra.Item {
 
     /**
      * An empty action extra does nothing.

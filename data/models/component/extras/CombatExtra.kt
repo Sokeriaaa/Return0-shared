@@ -24,15 +24,15 @@ import sokeriaaa.return0.shared.data.models.component.values.Value
  */
 @Serializable
 @SerialName("Combat")
-sealed interface CombatExtra : Extra {
+sealed interface CombatExtra : Extra.Combat {
     @Serializable
     @SerialName("Combat.HPChange")
-    data class HPChange(val hpChange: Value.Combat, val ignoresShield: Condition? = null) :
-        CombatExtra
+    data class HPChange(val hpChange: Value, val ignoresShield: Condition? = null) :
+        CombatExtra, Extra.Item
 
     @Serializable
     @SerialName("Combat.SPChange")
-    data class SPChange(val spChange: Value.Combat) : CombatExtra
+    data class SPChange(val spChange: Value) : CombatExtra, Extra.Item
 
     @Serializable
     @SerialName("Combat.APChange")

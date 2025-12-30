@@ -28,7 +28,6 @@ sealed interface Condition {
     @Serializable
     sealed interface Combat : Condition
 
-
     /**
      * This condition is applicable for the events.
      */
