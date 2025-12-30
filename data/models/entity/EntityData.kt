@@ -26,6 +26,8 @@ import sokeriaaa.return0.shared.data.models.entity.path.EntityPath
  * @param name Name of the Entity.
  * @param category Primary category of this Entity.
  * @param category2 Secondary category of this Entity. (If have)
+ * @param levelPacing The pacing for leveling up this entity, default is 50.
+ *                    The higher this value is, the more difficult to level up this entity.
  * @param functions Functions of this entity.
  * @param attackModifier Modifier for the base attack action.
  */
@@ -41,6 +43,7 @@ data class EntityData(
     val baseHP: Int,
     val baseSP: Int,
     val baseAP: Int,
+    val levelPacing: Int = 50,
     val functions: List<FunctionData>,
     val attackModifier: GeneralAttackModifier? = null
 ) {
