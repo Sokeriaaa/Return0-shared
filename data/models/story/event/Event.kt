@@ -228,6 +228,20 @@ sealed interface Event {
     data class SaveVariable(val key: String, val variable: Value.Event) : Event
 
     /**
+     * Obtain a new entity with the initial status.
+     */
+    @Serializable
+    @SerialName("ObtainEntity")
+    data class ObtainEntity(
+        val entityName: String,
+        val level: Int = 1,
+        val exp: Int = 0,
+        val currentHP: Int? = null,
+        val currentSP: Int? = null,
+        val pluginID: Long? = null,
+    ): Event
+
+    /**
      * Show the map again after being hidden by [HideMap].
      */
     @Serializable
