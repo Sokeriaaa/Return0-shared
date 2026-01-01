@@ -239,7 +239,7 @@ sealed interface Event {
         val currentHP: Int? = null,
         val currentSP: Int? = null,
         val pluginID: Long? = null,
-    ): Event
+    ) : Event
 
     /**
      * Show the map again after being hidden by [HideMap].
@@ -299,6 +299,13 @@ sealed interface Event {
     @Serializable
     @SerialName("Failed")
     data object Failed : Event
+
+    /**
+     * A special event that requests the user to input "return 0;" in a text field.
+     */
+    @Serializable
+    @SerialName("TypeReturn0")
+    data object TypeReturn0 : Event
 
     /**
      * Can only used by items. Throws an exception to interrupt the usage of item.
