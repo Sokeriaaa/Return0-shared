@@ -76,6 +76,15 @@ sealed interface Event {
     }
 
     /**
+     * Display a tips
+     */
+    @Serializable
+    @SerialName("Tips")
+    data class Tips(
+        val tipsRes: String,
+    ) : Event
+
+    /**
      * Ask the user to make a decision.
      */
     @Serializable
