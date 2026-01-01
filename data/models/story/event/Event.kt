@@ -87,6 +87,20 @@ sealed interface Event {
     }
 
     /**
+     * Let the user select every of the [items] exactly once (No fixed order required).
+     *
+     * After all items is selected, execute [onFinished].
+     */
+    @Serializable
+    @SerialName("ChoiceOneByOne")
+    data class ChoiceOneByOne(
+        val items: List<Pair<String, Event>>,
+        val onFinished: Event = Empty,
+    ) : Event {
+        constructor(vararg items: Pair<String, Event>, onFinished: Event = Empty) : this(listOf(*items), onFinished)
+    }
+
+    /**
      * Start a combat with certain config.
      */
     @Serializable
