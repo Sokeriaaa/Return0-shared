@@ -19,12 +19,18 @@ import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 
 /**
  * A data class for quests.
+ *
+ * @param priority The priority of this quest. The lower the value is (closes to 0),
+ *                 the more important this quest is.
+ * @param navigation The target location of this quest (if it has).
  */
 @Serializable
 data class QuestData(
     val key: String,
     val nameRes: String,
     val descriptionRes: String,
+    val priority: Int,
+    val navigation: Pair<String, Int>? = null,
     val currencyRewards: Map<CurrencyType, Int>? = null,
     val inventoryRewards: Map<String, Int>? = null,
 )
