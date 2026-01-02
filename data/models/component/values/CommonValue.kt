@@ -68,6 +68,11 @@ sealed interface CommonValue : Value.Combat, Value.Event, Value.Item {
 
         @ConsistentCopyVisibility
         @Serializable
+        @SerialName("Common.Math.Power")
+        data class Power internal constructor(val value1: Value, val value2: Value) : Math
+
+        @ConsistentCopyVisibility
+        @Serializable
         @SerialName("Common.Math.AbsoluteValue")
         data class AbsoluteValue internal constructor(val value: Value) : Math
 

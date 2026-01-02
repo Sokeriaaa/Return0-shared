@@ -114,6 +114,10 @@ operator fun Value.unaryMinus() = when (this) {
 infix fun Value.shl(bitCount: Value) = CommonValue.Math.Shift(this, bitCount)
 infix fun Value.shr(bitCount: Value) = CommonValue.Math.Shift(this, -bitCount)
 
+infix fun Value.pow(b: Value) = CommonValue.Math.Power(this, b)
+infix fun Value.pow(b: Int) = CommonValue.Math.Power(this, Value(b))
+infix fun Value.pow(b: Float) = CommonValue.Math.Power(this, Value(b))
+
 val Value.absoluteValue: Value
     get() = abs(this)
 
