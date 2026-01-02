@@ -251,6 +251,17 @@ sealed interface Event {
     data class SaveVariable(val key: String, val variable: Value.Event) : Event
 
     /**
+     * Refresh all the events in this map, depends on their visibility.
+     *
+     * 1. The current Sequence of events will continue to execute even if the MapEvent is vanished.
+     * 2. Events with an ENTERED trigger will *not* execute after being displayed in this way.
+     *    The player need to reenter the map in order to trigger it.
+     */
+    @Serializable
+    @SerialName("RefreshEvents")
+    data object RefreshEvents : Event
+
+    /**
      * Obtain a new entity with the initial status.
      */
     @Serializable
