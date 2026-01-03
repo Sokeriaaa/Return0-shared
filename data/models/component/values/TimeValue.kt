@@ -14,36 +14,48 @@
  */
 package sokeriaaa.return0.shared.data.models.component.values
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * A value class being calculated during the combat.
+ * Calculate the time in millis mainly for event conditions.
  */
 @Serializable
-sealed interface Value {
+sealed interface TimeValue : Value.Time {
 
     /**
-     * This value is applicable for the combats.
+     * System.currentTimeMillis() / Clock.System.now().toEpochMilliseconds()
      */
     @Serializable
-    sealed interface Combat : Value
+    @SerialName("Now")
+    data object Now : TimeValue
 
     /**
-     * This value is applicable for the events.
+     * Millis after now.
      */
     @Serializable
-    sealed interface Event : Value
+    @SerialName("After")
+    data class After(val millis: Long) : TimeValue
 
     /**
-     * This value is applicable for the items.
+     * 0:00 UTC of the next day. Can apply offset.
      */
     @Serializable
-    sealed interface Item : Value
+    @SerialName("NextDay")
+    data class NextDay(val offsetMillis: Long = 0L) : TimeValue
 
     /**
-     * This value is applicable for time calculation.
+     * 0:00 UTC of the next **Sunday**. Can apply offset.
      */
     @Serializable
-    sealed interface Time : Value
+    @SerialName("NextWeek")
+    data class NextWeek(val offsetMillis: Long = 0L) : TimeValue
+
+    /**
+     * Directly input the time in millis. Mainly for testing proposes or default values.
+     */
+    @Serializable
+    @SerialName("Custom")
+    data class Custom(val timeInMillis: Long) : TimeValue
 
 }

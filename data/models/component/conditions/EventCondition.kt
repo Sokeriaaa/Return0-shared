@@ -17,6 +17,7 @@ package sokeriaaa.return0.shared.data.models.component.conditions
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.common.Comparator
+import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.title.Title
 
 sealed interface EventCondition : Condition.Event {
@@ -50,5 +51,15 @@ sealed interface EventCondition : Condition.Event {
     @SerialName("Event.QuestCompleted")
     data class QuestCompleted(
         val key: String,
+    ) : EventCondition
+
+    /**
+     * Compare the current time with the [time] value.
+     */
+    @Serializable
+    @SerialName("Event.CompareTime")
+    data class CompareTime(
+        val comparator: Comparator,
+        val time: TimeValue,
     ) : EventCondition
 }

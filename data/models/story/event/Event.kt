@@ -18,6 +18,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.extras.Extra
+import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 
@@ -249,6 +250,13 @@ sealed interface Event {
     @Serializable
     @SerialName("SaveVariable")
     data class SaveVariable(val key: String, val variable: Value.Event) : Event
+
+    /**
+     * Save a time stamp (in millis) to current save.
+     */
+    @Serializable
+    @SerialName("SaveTimeStamp")
+    data class SaveTimeStamp(val key: String, val time: TimeValue) : Event
 
     /**
      * Refresh all the events in this map, depends on their visibility.
