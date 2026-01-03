@@ -52,6 +52,13 @@ sealed interface TimeValue : Value.Time {
     data class NextWeek(val offsetMillis: Long = 0L) : TimeValue
 
     /**
+     * The saved time with specified key.
+     */
+    @Serializable
+    @SerialName("Saved")
+    data class Saved(val key: String) : TimeValue
+
+    /**
      * Directly input the time in millis. Mainly for testing proposes or default values.
      */
     @Serializable

@@ -61,5 +61,8 @@ sealed interface EventCondition : Condition.Event {
     data class CompareTime(
         val comparator: Comparator,
         val time: TimeValue,
-    ) : EventCondition
+    ) : EventCondition {
+        constructor(comparator: Comparator, key: String) : this(comparator, TimeValue.Saved(key))
+        constructor(comparator: Comparator, millis: Long) : this(comparator, TimeValue.Custom(millis))
+    }
 }
