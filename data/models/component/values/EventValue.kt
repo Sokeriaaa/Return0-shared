@@ -41,4 +41,11 @@ sealed interface EventValue : Value.Event {
     @Serializable
     @SerialName("Event.Inventory")
     data class Inventory(val key: String) : EventValue
+
+    /**
+     * Returns the ordinal of the player's current title (starts from 0).
+     */
+    @Serializable
+    @SerialName("Event.TitleOrdinal")
+    data object TitleOrdinal : EventValue
 }
