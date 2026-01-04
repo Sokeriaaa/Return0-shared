@@ -45,7 +45,8 @@ data class EntityData(
     val baseAP: Int,
     val levelPacing: Int = 50,
     val functions: List<FunctionData>,
-    val attackModifier: GeneralAttackModifier? = null
+    val attackModifier: GeneralAttackModifier? = null,
+    val dropTable: EntityDropTable? = null,
 ) {
     /**
      * The modifier for the general attack action for entities. It's possible to alter the power
