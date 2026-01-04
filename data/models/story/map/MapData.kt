@@ -47,7 +47,7 @@ data class MapData(
     @Serializable
     data class BuggyEntry(
         val enemies: List<String>,
-        val level: Value,
+        val level: Value.Event,
     ) {
         constructor(enemies: List<String>, difficulty: Int) :
                 this(enemies, EventValue.EnemyLevel(difficulty))
