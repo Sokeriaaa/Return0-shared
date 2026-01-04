@@ -48,4 +48,16 @@ sealed interface EventValue : Value.Event {
     @Serializable
     @SerialName("Event.TitleOrdinal")
     data object TitleOrdinal : EventValue
+
+    /**
+     * Returns an enemy level based on the player's current title.
+     * This value should only be used for starting combats and be filled in the level slots.
+     *
+     * @param difficulty The difficulty of the map.
+     * @param offset The offset of value. Final level will be between level-offset and
+     *               level+offset with a minimum value 1. Default is 0.
+     */
+    @Serializable
+    @SerialName("Event.EnemyLevel")
+    data class EnemyLevel(val difficulty: Int, val offset: Int = 0) : EventValue
 }
