@@ -15,6 +15,8 @@
 package sokeriaaa.return0.shared.data.models.story.map
 
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.models.component.values.EventValue
+import sokeriaaa.return0.shared.data.models.component.values.Value
 
 /**
  * Game map data. We use a "Kotlin file" to present a map.
@@ -24,7 +26,6 @@ import kotlinx.serialization.Serializable
  * @param lines Total lines of this map/file.
  * @param buggyRange The ranges that the user may encounter bugs to start a combat.
  * @param buggyEntries Enemy teams may be encountered in the [buggyRange].
- * @param difficulty In 1~5. The difficulty for the save user title.
  * @param events Events in this map.
  */
 @Serializable
@@ -33,16 +34,23 @@ data class MapData(
     val lines: Int,
     val buggyRange: List<Pair<Int, Int>>,
     val buggyEntries: List<BuggyEntry>,
-    val difficulty: Int,
     val events: List<MapEvent>,
 ) {
 
     /**
      * An enemy team the user may encounter in the buggy range.
+     *
+     * @param level The level of each enemy. This value is calculated independently for each enemy.
+     *              If a randomed value is used here, the generated enemy team may have different
+     *              levels.
      */
     @Serializable
     data class BuggyEntry(
         val enemies: List<String>,
-    )
+        val level: Value,
+    ) {
+        constructor(enemies: List<String>, difficulty: Int) :
+                this(enemies, EventValue.EnemyLevel(difficulty))
+    }
 
 }
