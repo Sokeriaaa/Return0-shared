@@ -16,6 +16,7 @@ package sokeriaaa.return0.shared.data.models.story.inventory
 
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.extras.Extra
+import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.event.Event
 
 /**
@@ -23,6 +24,9 @@ import sokeriaaa.return0.shared.data.models.story.event.Event
  *
  * @param types Types of this item.
  * @param isConsumedAfterUse This item wil be consumed after used if this param is true.
+ * @param maximumUsage When this value is not null, it allows the player to use multiple of this
+ *                     item in the map. This value presents the maximum count allowed to use in a
+ *                     single usage. 0 means cannot use.
  * @param useInCombat This item will be executed as an action, then apply this extra to the target.
  *                    `null` means this item cannot be used in a combat.
  * @param useInMap This item will be executed as an event, then this event will be executed.
@@ -36,6 +40,7 @@ data class ItemData(
     val rarity: Rarity,
     val types: List<Type>,
     val isConsumedAfterUse: Boolean = true,
+    val maximumUsage: Value? = null,
     val useInCombat: Extra? = null,
     val useInMap: Event? = null,
 ) {
