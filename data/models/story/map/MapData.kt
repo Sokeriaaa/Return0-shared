@@ -26,6 +26,8 @@ import sokeriaaa.return0.shared.data.models.component.values.Value
  * @param lines Total lines of this map/file.
  * @param buggyRange The ranges that the user may encounter bugs to start a combat.
  * @param buggyEntries Enemy teams may be encountered in the [buggyRange].
+ * @param failedAnchor When the player is failed in this map, they will be teleported to this
+ *                     position with HP slightly recovered.
  * @param events Events in this map.
  */
 @Serializable
@@ -34,6 +36,7 @@ data class MapData(
     val lines: Int,
     val buggyRange: List<Pair<Int, Int>>,
     val buggyEntries: List<BuggyEntry>,
+    val failedAnchor: Pair<String, Int> = name to 1,
     val events: List<MapEvent>,
 ) {
 
