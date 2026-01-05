@@ -74,6 +74,17 @@ enum class Comparator {
         }
     }
 
+    fun compare(value1: Long, value2: Long): Boolean {
+        return when (this) {
+            GT -> value1 > value2
+            GTEQ -> value1 >= value2
+            LT -> value1 < value2
+            LTEQ -> value1 <= value2
+            EQ -> value1 == value2
+            NEQ -> value1 != value2
+        }
+    }
+
     companion object {
         // Alias
         val GREATER = GT
