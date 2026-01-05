@@ -50,9 +50,9 @@ sealed interface Event {
     @Serializable
     @SerialName("Conditioned")
     data class Conditioned(
-        val condition: Condition.Event,
-        val ifTrue: Event = Empty,
-        val ifFalse: Event = Empty,
+        val condition: Condition,
+        val ifTrue: Event? = null,
+        val ifFalse: Event? = null,
     ) : Event
 
     /**

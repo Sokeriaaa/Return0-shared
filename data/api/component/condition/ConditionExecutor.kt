@@ -19,7 +19,7 @@ import sokeriaaa.return0.shared.data.models.component.extras.CommonExtra
 import sokeriaaa.return0.shared.data.models.component.extras.Extra
 import sokeriaaa.return0.shared.data.models.component.values.CommonValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
-import kotlin.jvm.JvmInline
+import sokeriaaa.return0.shared.data.models.story.event.Event
 
 fun IF(condition: Condition) =
     ConditionExecutor(condition)
@@ -47,6 +47,18 @@ value class ConditionExecutor @PublishedApi internal constructor(val condition: 
         ifTrue: Extra? = null,
         ifFalse: Extra? = null
     ): Extra = CommonExtra.Conditioned(
+        condition = condition,
+        ifTrue = ifTrue,
+        ifFalse = ifFalse,
+    )
+
+    /**
+     * Event
+     */
+    fun then(
+        ifTrue: Event? = null,
+        ifFalse: Event? = null
+    ): Event = Event.Conditioned(
         condition = condition,
         ifTrue = ifTrue,
         ifFalse = ifFalse,
