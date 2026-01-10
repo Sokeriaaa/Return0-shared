@@ -28,4 +28,11 @@ sealed interface CombatCondition : Condition.Combat {
     @Serializable
     @SerialName("Combat.Critical")
     data object Critical : CombatCondition
+
+    /**
+     * The user and target in this context are identical.
+     */
+    @Serializable
+    @SerialName("Combat.TargetingSelf")
+    data object TargetingSelf : CombatCondition
 }

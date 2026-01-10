@@ -16,6 +16,7 @@ package sokeriaaa.return0.shared.data.models.component.values
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.models.component.common.Formatter
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 
 @Serializable
@@ -28,7 +29,10 @@ sealed interface CommonValue : Value.Combat, Value.Event, Value.Item {
     @ConsistentCopyVisibility
     @Serializable
     @SerialName("Common.Constant")
-    data class Constant internal constructor(val value: Float) : CommonValue
+    data class Constant internal constructor(
+        val value: Float,
+        val formatter: Formatter,
+    ) : CommonValue
 
     /**
      * Math operations
@@ -109,6 +113,7 @@ sealed interface CommonValue : Value.Combat, Value.Event, Value.Item {
         data class RandomFloat internal constructor(
             val start: Float,
             val end: Float,
+            val formatter: Formatter,
         ) : CommonValue
     }
 

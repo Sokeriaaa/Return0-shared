@@ -14,18 +14,24 @@
  */
 package sokeriaaa.return0.shared.data.api.component.value
 
+import sokeriaaa.return0.shared.data.models.component.common.Formatter
 import sokeriaaa.return0.shared.data.models.component.values.CommonValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
 /**
  * Create a constant value of Int.
  */
-fun Value(value: Int) = CommonValue.Constant(value.toFloat())
+fun Value(value: Int) = CommonValue.Constant(value.toFloat(), Formatter.Integer)
 
 /**
  * Create a constant value of Float.
  */
-fun Value(value: Float) = CommonValue.Constant(value)
+fun Value(value: Float, decimal: Int = 1) = CommonValue.Constant(value, Formatter.Decimal(decimal))
+
+/**
+ * Create a constant value of Float displayed in percent.
+ */
+fun PercentValue(value: Float, decimal: Int = 1) = CommonValue.Constant(value, Formatter.Percent(decimal))
 
 /**
  * Create a random value with in [range].
@@ -36,8 +42,14 @@ fun Value(range: IntRange) =
 /**
  * Create a random value with in [range].
  */
-fun Value(range: ClosedFloatingPointRange<Float>) =
-    CommonValue.Math.RandomFloat(range.start, range.endInclusive)
+fun Value(range: ClosedFloatingPointRange<Float>, decimal: Int = 1) =
+    CommonValue.Math.RandomFloat(range.start, range.endInclusive, Formatter.Decimal(decimal))
+
+/**
+ * Create a random value with in [range] displayed in percent.
+ */
+fun PercentValue(range: ClosedFloatingPointRange<Float>, decimal: Int = 1) =
+    CommonValue.Math.RandomFloat(range.start, range.endInclusive, Formatter.Percent(decimal))
 
 /**
  * Create a random value with in [start]..[endInclusive].
@@ -48,8 +60,14 @@ fun Value(start: Int, endInclusive: Int) =
 /**
  * Create a random value with in [start]..<[end].
  */
-fun Value(start: Float, end: Float) =
-    CommonValue.Math.RandomFloat(start, end)
+fun Value(start: Float, end: Float, decimal: Int = 1) =
+    CommonValue.Math.RandomFloat(start, end, Formatter.Decimal(decimal))
+
+/**
+ * Create a random value with in [start]..<[end] displayed in percent.
+ */
+fun PercentValue(start: Float, end: Float, decimal: Int = 1) =
+    CommonValue.Math.RandomFloat(start, end, Formatter.Percent(decimal))
 
 fun sumOf(vararg values: Value) = CommonValue.Math.Sum(values.asList())
 
