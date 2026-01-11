@@ -130,37 +130,4 @@ sealed interface CommonValue : Value.Combat, Value.Event, Value.Item {
         val defaultValue: Value? = null,
     ) : CommonValue
 
-    /**
-     * Calculate the [value] on the **user** of action.
-     */
-    @ConsistentCopyVisibility
-    @Serializable
-    @SerialName("Common.ForUser")
-    @Deprecated("Use CombatValue.ForUser instead.")
-    data class ForUser internal constructor(val value: Value) : CommonValue
-
-    /**
-     * Calculate the [value] but with **the user and the target swapped**.
-     */
-    @ConsistentCopyVisibility
-    @Serializable
-    @SerialName("Common.Swapped")
-    @Deprecated("Use CombatValue.Swapped instead.")
-    data class Swapped internal constructor(val value: Value) : CommonValue
-
-    /**
-     * Load a value in the action saved by
-     *  [sokeriaaa.return0.shared.data.models.component.extras.CommonExtra.SaveValue].
-     *
-     * @see sokeriaaa.return0.shared.data.models.component.extras.CommonExtra.SaveValue
-     * @see sokeriaaa.return0.models.action.Action.values
-     */
-    @Serializable
-    @SerialName("Common.LoadValue")
-    @Deprecated("Use CombatValue.LoadValue instead.")
-    data class LoadValue(
-        val key: String,
-        val defaultValue: Value? = null,
-    ) : CommonValue
-
 }
