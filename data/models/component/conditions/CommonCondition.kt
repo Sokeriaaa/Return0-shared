@@ -16,7 +16,7 @@ package sokeriaaa.return0.shared.data.models.component.conditions
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import sokeriaaa.return0.shared.data.api.component.value.Value
+import sokeriaaa.return0.shared.data.api.component.value.PercentValue
 import sokeriaaa.return0.shared.data.models.component.common.Comparator
 import sokeriaaa.return0.shared.data.models.component.values.Value
 
@@ -61,16 +61,14 @@ sealed interface CommonCondition : Condition.Combat, Condition.Event, Condition.
     ) : CommonCondition
 
     /**
-     * A condition returns true with chance of [success]/[base], otherwise false.
+     * A condition returns true with chance of [success], otherwise false.
      */
     @Serializable
     @SerialName("Common.Chance")
     data class Chance(
         val success: Value,
-        val base: Value = Value(1),
     ) : CommonCondition {
-        constructor(success: Int, base: Int = 1) : this(Value(success), Value(base))
-        constructor(success: Float, base: Float = 1F) : this(Value(success), Value(base))
+        constructor(success: Float, decimal: Int = 0) : this(PercentValue(success, decimal))
     }
 
     /**
