@@ -21,7 +21,7 @@ sealed interface Formatter {
     @SerialName("Percent")
     data class Percent(val decimal: Int) : Formatter {
         override fun format(value: Float): String {
-            return value.toPrecision(decimal)
+            return (value * 100).toPrecision(decimal) + "%"
         }
     }
 
@@ -29,7 +29,7 @@ sealed interface Formatter {
     @SerialName("Decimal")
     data class Decimal(val decimal: Int) : Formatter {
         override fun format(value: Float): String {
-            return (value * 100).toPrecision(decimal) + "%"
+            return value.toPrecision(decimal)
         }
     }
 
