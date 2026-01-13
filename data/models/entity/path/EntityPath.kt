@@ -17,49 +17,49 @@ package sokeriaaa.return0.shared.data.models.entity.path
 /**
  * The entity path.
  */
-enum class EntityPath {
+enum class EntityPath(val icon: String) {
     /**
      * Unspecified: A placeholder path, can be used on enemies or testing placeholders.
      */
-    UNSPECIFIED,
+    UNSPECIFIED(""),
 
     /**
      * Heap: Sustained & Self-Boost, sometimes AoE.
      */
-    HEAP,
+    HEAP("\uD83D\uDEE2\uFE0F"),
 
     /**
      * Thread: Aggressive Single-Target, rapid actions.
      */
-    THREAD,
+    THREAD("\u26D3\uFE0F"),
 
     /**
      * Overclock: Burst Utility & High damage.
      */
-    OVERCLOCK,
+    OVERCLOCK("\uD83D\uDCA5"),
 
     /**
      * Sandbox: Control & Crowd Manipulation
      */
-    SANDBOX,
+    SANDBOX("\uD83E\uDDF0"),
 
     /**
      * Protocol: Support & Buffing
      */
-    PROTOCOL,
+    PROTOCOL("\uD83D\uDD11"),
 
     /**
      * Daemon: Healing & Regeneration
      */
-    DAEMON,
+    DAEMON("\uD83D\uDC9A"),
 
     /**
      * Kernel: Tank & Defender, shielding.
      */
-    KERNEL,
+    KERNEL("\uD83D\uDEE1\uFE0F"),
 
     /**
      * Runtime: Sustained Damage & DoT
      */
-    RUNTIME,
+    RUNTIME("\u2699\uFE0F"),
 }

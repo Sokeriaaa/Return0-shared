@@ -41,7 +41,7 @@ enum class Category(val id: Int, val icon: String) {
     NORMAL(id = 0, icon = ""),
 
     @SerialName("cls")
-    CLASS(id = 1, icon = "\uD83E\uDDF1"),
+    CLASS(id = 1, icon = "\uD83D\uDCE6"),
 
     @SerialName("int")
     INTERFACE(id = 2, icon = "\uD83E\uDDE9\uFE0F"),
@@ -59,7 +59,7 @@ enum class Category(val id: Int, val icon: String) {
     IO(id = 6, icon = "\uD83D\uDDC2\uFE0F"),
 
     @SerialName("exc")
-    EXCEPTION(id = 7, icon = "\uD83D\uDCA5"),
+    EXCEPTION(id = 7, icon = "\u2622\uFE0F"),
 
     @SerialName("sec")
     SECURITY(id = 8, icon = "\uD83D\uDD10"),
