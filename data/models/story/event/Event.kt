@@ -172,26 +172,16 @@ sealed interface Event {
 
     /**
      * The teleport system for the game.
+     *
+     * @param isAccessible Whether this route hub is accessible, default is `true`.
+     * @param onDenied Executes when this route hub denys user's access.
      */
     @Serializable
     @SerialName("RouteHub")
-    sealed class RouteHub : Event {
-        /**
-         * Open the route hub panel.
-         *
-         * @param isAccessible Whether this route hub is accessible, default is `true`.
-         * @param onDenied Executes when this route hub denys user's access.
-         */
-        data class OpenPanel(
-            val isAccessible: Condition.Event? = null,
-            val onDenied: Event? = null,
-        ) : RouteHub()
-
-        /**
-         * Index a new route hub.
-         */
-        data class Indexed(val fileName: String, val lineNumber: Int) : RouteHub()
-    }
+    data class RouteHub(
+        val isAccessible: Condition.Event? = null,
+        val onDenied: Event? = null,
+    ) : Event
 
     /**
      * Teleport the user to a specified location.
