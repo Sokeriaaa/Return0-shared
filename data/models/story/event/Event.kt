@@ -171,6 +171,23 @@ sealed interface Event {
     }
 
     /**
+     * The teleport system for the game.
+     */
+    @Serializable
+    @SerialName("RouteHub")
+    sealed class RouteHub : Event {
+        /**
+         * Open the route hub panel.
+         */
+        data object OpenPanel : RouteHub()
+
+        /**
+         * Index a new route hub.
+         */
+        data class Indexed(val fileName: String, val lineNumber: Int) : RouteHub()
+    }
+
+    /**
      * Teleport the user to a specified location.
      */
     @Serializable
