@@ -39,6 +39,7 @@ data class ItemData(
     val key: String,
     val nameRes: String,
     val descriptionRes: String,
+    val loreRes: String? = null,
     val rarity: Rarity,
     val types: List<Type>,
     val isConsumedAfterUse: Boolean = true,
