@@ -178,8 +178,14 @@ sealed interface Event {
     sealed class RouteHub : Event {
         /**
          * Open the route hub panel.
+         *
+         * @param isAccessible Whether this route hub is accessible, default is `true`.
+         * @param onDenied Executes when this route hub denys user's access.
          */
-        data object OpenPanel : RouteHub()
+        data class OpenPanel(
+            val isAccessible: Condition.Event? = null,
+            val onDenied: Event? = null,
+        ) : RouteHub()
 
         /**
          * Index a new route hub.
