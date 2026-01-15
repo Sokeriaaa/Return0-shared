@@ -174,12 +174,17 @@ sealed interface Event {
      * The teleport system for the game.
      *
      * @param isAccessible Whether this route hub is accessible, default is `true`.
-     * @param onDenied Executes when this route hub denys user's access.
+     * @param isIndexable Whether this route hub can be indexed, even if it's not accessible.
+     *                    Once indexed, this route hub can be a destination from another hub,
+     *                    no matter this route hub is accessible or not. default is `true`.
+     * @param onDenied Executes when this route hub denys user's access. If `null`, a default
+     *                 [Text.Narrator] will be used.
      */
     @Serializable
     @SerialName("RouteHub")
     data class RouteHub(
         val isAccessible: Condition.Event? = null,
+        val isIndexable: Condition.Event? = null,
         val onDenied: Event? = null,
     ) : Event
 
