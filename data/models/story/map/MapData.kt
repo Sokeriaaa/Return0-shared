@@ -40,6 +40,12 @@ data class MapData(
     val events: List<MapEvent>,
 ) {
 
+    init {
+        require(buggyRange.isEmpty() || buggyEntries.isNotEmpty()) {
+            "When buggyRange is defined, at least one entry should be included in buggyEntries."
+        }
+    }
+
     /**
      * An enemy team the user may encounter in the buggy range.
      *
