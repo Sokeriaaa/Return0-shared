@@ -18,3 +18,14 @@ import sokeriaaa.return0.shared.data.models.component.extras.CommonExtra
 import sokeriaaa.return0.shared.data.models.component.extras.Extra
 
 fun extrasGroupOf(vararg extras: Extra): Extra = CommonExtra.Grouped(extras.asList())
+
+fun extrasGroupOfOrNull(vararg extras: Extra?): Extra? = extras.asSequence()
+    .filterNotNull()
+    .toList()
+    .let {
+        when {
+            it.isEmpty() -> null
+            it.size == 1 -> it.first()
+            else -> CommonExtra.Grouped(it)
+        }
+    }

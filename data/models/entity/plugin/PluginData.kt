@@ -26,8 +26,8 @@ import sokeriaaa.return0.shared.data.models.entity.path.EntityPath
  *             only const values will take effect, other effects are disabled.
  * @param onAttack Executes when this entity attacked successfully on an enemy.
  * @param onDefend Executes when this entity is attacked successfully by an enemy.
- * @param attackRate Damage multiplier when attacking enemy.
- * @param defendRate Damage multiplier when being attacked by an enemy.
+ * @param attackRateOffset Damage multiplier offset when attacking enemy.
+ * @param defendRateOffset Damage multiplier offset when being attacked by an enemy.
  */
 @Serializable
 data class PluginData(
@@ -37,6 +37,6 @@ data class PluginData(
     val path: EntityPath,
     val onAttack: Extra? = null,
     val onDefend: Extra? = null,
-    val attackRate: Value? = null,
-    val defendRate: Value? = null,
+    val attackRateOffset: Value? = null,
+    val defendRateOffset: Value? = null,
 )
