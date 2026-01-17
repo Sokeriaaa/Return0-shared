@@ -22,7 +22,6 @@ import sokeriaaa.return0.shared.data.models.entity.path.EntityPath
 /**
  * Plugin (Weapon) data.
  *
- * @param name Name of this plugin.
  * @param path Entity path of this plugin. If the path of entity and plugin are not identical,
  *             only const values will take effect, other effects are disabled.
  * @param onAttack Executes when this entity attacked successfully on an enemy.
@@ -32,7 +31,8 @@ import sokeriaaa.return0.shared.data.models.entity.path.EntityPath
  */
 @Serializable
 data class PluginData(
-    val name: String,
+    val key: String,
+    val nameRes: String,
     val descriptionRes: String,
     val path: EntityPath,
     val onAttack: Extra? = null,

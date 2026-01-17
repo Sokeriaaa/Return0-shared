@@ -140,4 +140,13 @@ sealed interface EntityValue : Value.Combat, Value.Item {
     @Serializable
     @SerialName("Entity.SumOfShieldValue")
     data object SumOfShieldValue : EntityValue
+
+    /**
+     * Actions taken in current combat.
+     *
+     * Not applicable for the items (always return 0)
+     */
+    @Serializable
+    @SerialName("Entity.ActionsTaken")
+    data object ActionsTaken : EntityValue
 }
