@@ -15,6 +15,17 @@
 package sokeriaaa.return0.shared.data.models.combat
 
 import kotlinx.serialization.Serializable
+import sokeriaaa.return0.shared.data.models.entity.plugin.PluginConst
+import sokeriaaa.return0.shared.data.models.entity.plugin.PluginData
 
 @Serializable
-sealed interface EntityState
+sealed interface EntityState {
+
+    @Serializable
+    data class Plugin(
+        val pluginData: PluginData,
+        val tier: Int,
+        val constMap: Map<PluginConst, Int>,
+    )
+
+}

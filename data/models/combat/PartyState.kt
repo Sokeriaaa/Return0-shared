@@ -31,4 +31,5 @@ data class PartyState(
     val level: Int,
     val currentHP: Int? = null,
     val currentSP: Int? = null,
+    val plugin: EntityState.Plugin? = null,
 ) : EntityState

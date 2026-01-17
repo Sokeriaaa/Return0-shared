@@ -26,4 +26,5 @@ import sokeriaaa.return0.shared.data.models.entity.EntityData
 data class EnemyState(
     val entityData: EntityData,
     val level: Int,
+    val plugin: EntityState.Plugin? = null,
 ) : EntityState
