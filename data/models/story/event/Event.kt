@@ -238,6 +238,18 @@ sealed interface Event {
     ) : Event
 
     /**
+     * Obtain a randomly generated plugin with specified key and tier.
+     *
+     * @param tier The tier of generated plugin, must between 1 and 5.
+     */
+    @Serializable
+    @SerialName("ObtainPlugin")
+    data class ObtainPlugin(
+        val key: String,
+        val tier: Value.Event,
+    ) : Event
+
+    /**
      * Claim a quest.
      */
     @Serializable
