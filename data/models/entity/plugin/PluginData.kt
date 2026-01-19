@@ -26,6 +26,7 @@ import sokeriaaa.return0.shared.data.models.entity.path.EntityPath
  *             only const values will take effect, other effects are disabled.
  * @param onAttack Executes when this entity attacked successfully on an enemy.
  * @param onDefend Executes when this entity is attacked successfully by an enemy.
+ *                 In this extra, the `user` is current entity, the `target` is the attacker.
  * @param attackRateOffset Damage multiplier offset when attacking enemy.
  * @param defendRateOffset Damage multiplier offset when being attacked by an enemy.
  */
