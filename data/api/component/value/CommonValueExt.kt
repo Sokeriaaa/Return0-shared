@@ -165,5 +165,26 @@ fun Value.coerceIn(range: IntRange) =
 fun Value.coerceIn(range: ClosedFloatingPointRange<Float>) =
     CommonValue.Math.Coerced(this, min = Value(range.start), max = Value(range.endInclusive))
 
+fun Value.coerceIn(minimumValue: Value, maximumValue: Value) =
+    CommonValue.Math.Coerced(this, min = minimumValue, max = maximumValue)
+
+fun Value.coerceIn(minimumValue: Float, maximumValue: Float) =
+    CommonValue.Math.Coerced(this, min = Value(minimumValue), max = Value(maximumValue))
+
+fun Value.coerceIn(minimumValue: Value, maximumValue: Float) =
+    CommonValue.Math.Coerced(this, min = minimumValue, max = Value(maximumValue))
+
+fun Value.coerceIn(minimumValue: Float, maximumValue: Value) =
+    CommonValue.Math.Coerced(this, min = Value(minimumValue), max = maximumValue)
+
+fun Value.coerceIn(minimumValue: Int, maximumValue: Int) =
+    CommonValue.Math.Coerced(this, min = Value(minimumValue), max = Value(maximumValue))
+
+fun Value.coerceIn(minimumValue: Value, maximumValue: Int) =
+    CommonValue.Math.Coerced(this, min = minimumValue, max = Value(maximumValue))
+
+fun Value.coerceIn(minimumValue: Int, maximumValue: Value) =
+    CommonValue.Math.Coerced(this, min = Value(minimumValue), max = maximumValue)
+
 fun minOf(vararg values: Value) = CommonValue.Math.MinOf(values.asList())
 fun maxOf(vararg values: Value) = CommonValue.Math.MaxOf(values.asList())
