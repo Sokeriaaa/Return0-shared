@@ -24,8 +24,8 @@ import sokeriaaa.return0.shared.data.models.component.extras.Extra
  * @param abbr The abbreviation of this effect. Can be 2~4 characters.
  * @param isDebuff Whether this effect is a debuff or not.
  * @param isStackable Whether this effect is stackable or not. If not stackable,
- *  when an effect with same name is about to add, firstly keep the one with a higher tier,
- *  then the one with a longer turns left.
+ *  when an effect with same name but different user is about to add, firstly keep
+ *  the one with a higher tier, then the one with a longer turns left.
  * @param isRemovable Whether this effect can be removed by a function that removes effects.
  * @param isFreeze Current entity will be frozen and skip the action during the effect time.
  * @param modifiers Modifiers of this effect.
