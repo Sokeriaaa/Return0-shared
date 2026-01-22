@@ -322,6 +322,10 @@ sealed interface Event {
 
     /**
      * Obtain a new entity with the initial status.
+     *
+     * @param onDuplicate Executes when an entity with identical name is already obtained by the
+     *                    player. If an entity with high level and exp is obtained, use the higher
+     *                    level and exp, keep all the other status.
      */
     @Serializable
     @SerialName("ObtainEntity")
@@ -332,6 +336,7 @@ sealed interface Event {
         val currentHP: Int? = null,
         val currentSP: Int? = null,
         val pluginID: Long? = null,
+        val onDuplicate: Event = Empty,
     ) : Event
 
     /**
