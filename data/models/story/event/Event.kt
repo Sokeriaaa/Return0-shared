@@ -21,7 +21,7 @@ import sokeriaaa.return0.shared.data.models.component.extras.Extra
 import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
-import sokeriaaa.return0.shared.data.models.story.event.shop.ShopEntry
+import sokeriaaa.return0.shared.data.models.story.event.interactive.shop.ShopEntry
 
 /**
  * Story events.

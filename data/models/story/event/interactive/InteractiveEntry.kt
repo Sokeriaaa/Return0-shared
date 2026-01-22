@@ -12,34 +12,24 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see <https://www.gnu.org/licenses/>.
  */
-package sokeriaaa.return0.shared.data.models.story.event.shop
+package sokeriaaa.return0.shared.data.models.story.event.interactive
 
-import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
-import sokeriaaa.return0.shared.data.models.story.event.item.ItemEntry
 
-/**
- * A shop entry.
- */
-@Serializable
-sealed interface ShopEntry {
+interface InteractiveEntry {
+    /**
+     * The price of this item. `null` means this entry is free to be purchased/crafted.
+     *
+     * For the shop, this value typically should be non-null and above 0.
+     */
+    val price: Value.Event?
 
     /**
-     * What is sold
+     * Currency type. Must not be `null` when [price] is not `null`.
      */
-    val item: ItemEntry
-
-    /**
-     * The price of this item. Typically, this value should be above 0.
-     */
-    val price: Value.Event
-
-    /**
-     * Currency type.
-     */
-    val currency: CurrencyType
+    val currency: CurrencyType?
 
     /**
      * Whether this entry is available.
@@ -47,17 +37,17 @@ sealed interface ShopEntry {
     val isAvailable: Condition.Event
 
     /**
-     * The limit of this item. `null` means not limited, the player can purchase
+     * The limit of this item. `null` means not limited, the player can purchase/craft
      * as much as they can.
      */
     val limit: Value.Event?
 
     /**
      * If limit is not null, the stock will be fully restored after this value of
-     * millis when the player purchased at least one item.
+     * millis when the player purchased/crafted at least one item.
      *
-     * This value is calculated and stored locally once the player purchased at least
-     * one item from this entry.
+     * This value is calculated and stored locally once the player purchase/crafted
+     * at least one item from this entry.
      *
      * Have no effect when [limit] is null.
      */

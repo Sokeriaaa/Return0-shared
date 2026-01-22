@@ -22,9 +22,9 @@ import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import sokeriaaa.return0.shared.data.models.story.event.Event
-import sokeriaaa.return0.shared.data.models.story.event.item.ItemEntry
-import sokeriaaa.return0.shared.data.models.story.event.shop.ConstructingShopEntry
-import sokeriaaa.return0.shared.data.models.story.event.shop.ShopEntry
+import sokeriaaa.return0.shared.data.models.story.event.interactive.ItemEntry
+import sokeriaaa.return0.shared.data.models.story.event.interactive.shop.ConstructingShopEntry
+import sokeriaaa.return0.shared.data.models.story.event.interactive.shop.ShopEntry
 import kotlin.jvm.JvmInline
 
 @DslMarker

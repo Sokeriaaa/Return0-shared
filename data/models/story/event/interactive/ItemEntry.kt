@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see <https://www.gnu.org/licenses/>.
  */
-package sokeriaaa.return0.shared.data.models.story.event.item
+package sokeriaaa.return0.shared.data.models.story.event.interactive
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -22,6 +22,7 @@ import kotlinx.serialization.Serializable
  *
  * Used for shops and workbenches.
  */
+@Serializable
 sealed interface ItemEntry {
     /**
      * The key of this entry, used for calculating refresh time.
@@ -49,11 +50,14 @@ sealed interface ItemEntry {
 
     /**
      * A plugin item.
+     *
+     * @param pluginKey Plugin key. When `null` is used here, it presents a random
+     *                  output.
      */
     @Serializable
     @SerialName("Plugin")
     data class Plugin(
-        val pluginKey: String,
+        val pluginKey: String?,
         val tier: Int,
         override val amount: Int = 1,
         override val key: String = "plugin:$pluginKey",

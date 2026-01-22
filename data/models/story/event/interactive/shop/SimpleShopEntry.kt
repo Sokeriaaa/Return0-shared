@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see <https://www.gnu.org/licenses/>.
  */
-package sokeriaaa.return0.shared.data.models.story.event.shop
+package sokeriaaa.return0.shared.data.models.story.event.interactive.shop
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,7 +20,7 @@ import sokeriaaa.return0.shared.data.models.component.conditions.CommonCondition
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
-import sokeriaaa.return0.shared.data.models.story.event.item.ItemEntry
+import sokeriaaa.return0.shared.data.models.story.event.interactive.ItemEntry
 
 /**
  * A simple shop entry.
