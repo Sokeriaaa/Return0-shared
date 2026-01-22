@@ -264,6 +264,13 @@ sealed interface Event {
     ) : Event
 
     /**
+     * A workbench allows the player to craft or convert items.
+     */
+    @Serializable
+    @SerialName("Workbench")
+    data object Workbench : Event
+
+    /**
      * Claim a quest.
      */
     @Serializable
