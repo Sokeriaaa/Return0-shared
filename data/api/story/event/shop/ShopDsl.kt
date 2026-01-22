@@ -22,8 +22,10 @@ import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import sokeriaaa.return0.shared.data.models.story.event.Event
+import sokeriaaa.return0.shared.data.models.story.event.item.ItemEntry
 import sokeriaaa.return0.shared.data.models.story.event.shop.ConstructingShopEntry
 import sokeriaaa.return0.shared.data.models.story.event.shop.ShopEntry
+import kotlin.jvm.JvmInline
 
 @DslMarker
 annotation class ShopDslMarker
@@ -65,7 +67,7 @@ value class ShopBuilder @PublishedApi internal constructor(
         amount: Int = 1,
         key: String = "inventory:$inventoryKey",
     ): EntryStarter = EntryStarter(
-        ShopEntry.Item.Inventory(
+        ItemEntry.Inventory(
             inventoryKey = inventoryKey,
             amount = amount,
             key = key,
@@ -82,7 +84,7 @@ value class ShopBuilder @PublishedApi internal constructor(
         amount: Int = 1,
         key: String = "plugin:$pluginKey",
     ): EntryStarter = EntryStarter(
-        ShopEntry.Item.Plugin(
+        ItemEntry.Plugin(
             pluginKey = pluginKey,
             tier = tier,
             amount = amount,
@@ -169,7 +171,7 @@ value class ShopBuilder @PublishedApi internal constructor(
 @JvmInline
 @ShopDslMarker
 value class EntryStarter @PublishedApi internal constructor(
-    @PublishedApi internal val item: ShopEntry.Item,
+    @PublishedApi internal val item: ItemEntry,
 )
 
 @JvmInline

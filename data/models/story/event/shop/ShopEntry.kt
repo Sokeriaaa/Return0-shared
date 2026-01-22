@@ -14,11 +14,11 @@
  */
 package sokeriaaa.return0.shared.data.models.story.event.shop
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
+import sokeriaaa.return0.shared.data.models.story.event.item.ItemEntry
 
 /**
  * A shop entry.
@@ -29,7 +29,7 @@ sealed interface ShopEntry {
     /**
      * What is sold
      */
-    val item: Item
+    val item: ItemEntry
 
     /**
      * The price of this item. Typically, this value should be above 0.
@@ -62,47 +62,4 @@ sealed interface ShopEntry {
      * Have no effect when [limit] is null.
      */
     val refreshAfter: Value.Time?
-
-    /**
-     * An item is sold at the shop.
-     */
-    @Serializable
-    sealed interface Item {
-
-        /**
-         * The key of this entry, used for calculating refresh time.
-         * The full shop should not have two identical keys with both have refreshing time.
-         * Default is inventoryKey/pluginKey
-         */
-        val key: String
-
-        /**
-         * An inventory item.
-         */
-        @Serializable
-        @SerialName("Inventory")
-        data class Inventory(
-            val inventoryKey: String,
-            val amount: Int = 1,
-            override val key: String = "inventory:$inventoryKey",
-        ) : Item
-
-        /**
-         * A plugin item.
-         */
-        @Serializable
-        @SerialName("Plugin")
-        data class Plugin(
-            val pluginKey: String,
-            val tier: Int,
-            val amount: Int = 1,
-            override val key: String = "plugin:$pluginKey",
-        ) : Item {
-            init {
-                require(tier in 1..5) {
-                    "Tier must be between 1 and 5, current: $tier"
-                }
-            }
-        }
-    }
 }
