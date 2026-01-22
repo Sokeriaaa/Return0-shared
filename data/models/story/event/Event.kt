@@ -21,6 +21,7 @@ import sokeriaaa.return0.shared.data.models.component.extras.Extra
 import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
+import sokeriaaa.return0.shared.data.models.story.event.shop.ShopEntry
 
 /**
  * Story events.
@@ -247,6 +248,19 @@ sealed interface Event {
     data class ObtainPlugin(
         val key: String,
         val tier: Value.Event,
+    ) : Event
+
+    /**
+     * Open a shop panel that can purchase items.
+     *
+     * @param key The key of this shop, used to compute refresh time.
+     *            Can be `null` only when all the entries can not be restocked.
+     */
+    @Serializable
+    @SerialName("Shop")
+    data class Shop(
+        val key: String? = null,
+        val entries: List<ShopEntry>,
     ) : Event
 
     /**
