@@ -166,6 +166,21 @@ value class ShopBuilder @PublishedApi internal constructor(
         return this
     }
 
+    @ShopDslMarker
+    fun addEntry(entry: ShopEntry) {
+        entries.add(entry)
+    }
+
+    @ShopDslMarker
+    fun addEntryCollection(entryCollection: Collection<ShopEntry>) {
+        entries.addAll(entryCollection)
+    }
+
+    @ShopDslMarker
+    fun include(shopBuilder: ShopBuilder) {
+        entries.addAll(shopBuilder.entries)
+    }
+
 }
 
 @JvmInline
