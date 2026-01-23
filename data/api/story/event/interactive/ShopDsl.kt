@@ -20,6 +20,7 @@ import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.conditions.EventCondition
 import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
+import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import sokeriaaa.return0.shared.data.models.story.event.Event
 import sokeriaaa.return0.shared.data.models.story.event.interactive.ItemEntry
 import sokeriaaa.return0.shared.data.models.story.event.interactive.shop.ConstructingShopEntry
@@ -140,6 +141,30 @@ value class ShopBuilder @PublishedApi internal constructor(
         this.isAvailable = condition
         return this
     }
+
+    /**
+     * A price label for [CurrencyType.TOKEN].
+     */
+    @ShopDslMarker
+    val Value.Event.token: CurrencyPair get() = CurrencyPair(this to CurrencyType.TOKEN)
+
+    /**
+     * A price label for [CurrencyType.TOKEN].
+     */
+    @ShopDslMarker
+    val Int.token: CurrencyPair get() = Value(this).token
+
+    /**
+     * A price label for [CurrencyType.CRYPTO].
+     */
+    @ShopDslMarker
+    val Value.Event.crypto: CurrencyPair get() = CurrencyPair(this to CurrencyType.CRYPTO)
+
+    /**
+     * A price label for [CurrencyType.CRYPTO].
+     */
+    @ShopDslMarker
+    val Int.crypto: CurrencyPair get() = Value(this).crypto
 
     @ShopDslMarker
     fun addEntry(entry: ShopEntry) {

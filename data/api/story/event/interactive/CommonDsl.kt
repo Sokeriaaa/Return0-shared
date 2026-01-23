@@ -14,37 +14,13 @@
  */
 package sokeriaaa.return0.shared.data.api.story.event.interactive
 
-import sokeriaaa.return0.shared.data.api.component.value.Value
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import kotlin.jvm.JvmInline
 
-interface InteractiveBuilder {
-    /**
-     * A price label for [CurrencyType.TOKEN].
-     */
-    @ShopDslMarker
-    val Value.Event.token: CurrencyPair get() = CurrencyPair(this to CurrencyType.TOKEN)
-
-    /**
-     * A price label for [CurrencyType.TOKEN].
-     */
-    @ShopDslMarker
-    val Int.token: CurrencyPair get() = Value(this).token
-
-    /**
-     * A price label for [CurrencyType.CRYPTO].
-     */
-    @ShopDslMarker
-    val Value.Event.crypto: CurrencyPair get() = CurrencyPair(this to CurrencyType.CRYPTO)
-
-    /**
-     * A price label for [CurrencyType.CRYPTO].
-     */
-    @ShopDslMarker
-    val Int.crypto: CurrencyPair get() = Value(this).crypto
-
-}
+@ShopDslMarker
+@WorkbenchDslMarker
+interface InteractiveBuilder
 
 @JvmInline
 @ShopDslMarker
