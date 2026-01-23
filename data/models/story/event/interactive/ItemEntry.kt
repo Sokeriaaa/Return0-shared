@@ -53,6 +53,9 @@ sealed interface ItemEntry {
      *
      * @param pluginKey Plugin key. When `null` is used here, it presents a random
      *                  output.
+     * @param tier Plugin tier, can be 0..5. 0 presents for random tier, other values
+     *             presents their exact value. When used for input, plugins with any
+     *             tier can be used.
      */
     @Serializable
     @SerialName("Plugin")

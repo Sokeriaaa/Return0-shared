@@ -22,6 +22,7 @@ import sokeriaaa.return0.shared.data.models.component.values.TimeValue
 import sokeriaaa.return0.shared.data.models.component.values.Value
 import sokeriaaa.return0.shared.data.models.story.currency.CurrencyType
 import sokeriaaa.return0.shared.data.models.story.event.interactive.shop.ShopEntry
+import sokeriaaa.return0.shared.data.models.story.event.interactive.workbench.WorkbenchEntry
 
 /**
  * Story events.
@@ -268,7 +269,10 @@ sealed interface Event {
      */
     @Serializable
     @SerialName("Workbench")
-    data object Workbench : Event
+    data class Workbench(
+        val key: String? = null,
+        val entries: List<WorkbenchEntry>,
+    ) : Event
 
     /**
      * Claim a quest.
