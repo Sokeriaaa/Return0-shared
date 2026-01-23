@@ -2,7 +2,7 @@ package sokeriaaa.return0.shared.data.models.story.event.interactive.shop
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import sokeriaaa.return0.shared.data.api.story.event.shop.ShopDslMarker
+import sokeriaaa.return0.shared.data.api.story.event.interactive.ShopDslMarker
 import sokeriaaa.return0.shared.data.models.component.conditions.CommonCondition
 import sokeriaaa.return0.shared.data.models.component.conditions.Condition
 import sokeriaaa.return0.shared.data.models.component.values.Value
