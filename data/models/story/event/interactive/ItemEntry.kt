@@ -61,13 +61,13 @@ sealed interface ItemEntry {
     @SerialName("Plugin")
     data class Plugin(
         val pluginKey: String?,
-        val tier: Int,
+        val tier: Int = 0,
         override val amount: Int = 1,
         override val key: String = "plugin:$pluginKey",
     ) : ItemEntry {
         init {
-            require(tier in 1..5) {
-                "Tier must be between 1 and 5, current: $tier"
+            require(tier in 0..5) {
+                "Tier must be between 0 and 5, current: $tier"
             }
         }
     }
