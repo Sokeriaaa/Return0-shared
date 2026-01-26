@@ -34,8 +34,6 @@ import sokeriaaa.return0.shared.data.models.entity.category.Category
  *  final power = `basePower + powerBonus * (tier - 1)`.
  * @param baseSPCost SP cost of this function. If the user's SP is insufficient,
  *  this function cannot be executed.
- * @param spCostBonus SP cost bonus for each tier of this function.
- *  final spCost = `baseSPCost + spCostBonus * (tier - 1)`.
  * @param growth Levels of the entity required to unlock certain tiers of this function.
  *  Starts from tier 1, for example, when the entity's level reaches `growth[1]`,
  *  this function will automatically upgrade to tier 2. `growth[0]` means the minimum level
@@ -56,7 +54,6 @@ data class FunctionData(
     val basePower: Int,
     val powerBonus: Int,
     val baseSPCost: Int,
-    val spCostBonus: Int,
     val growth: List<Int>?,
     val attackModifier: AttackModifier? = null,
     val extra: Extra? = null,
