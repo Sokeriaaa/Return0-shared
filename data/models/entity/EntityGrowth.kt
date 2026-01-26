@@ -26,5 +26,6 @@ data class EntityGrowth(
     val defGrowth: Float,
     val spdGrowth: Float,
     val hpGrowth: Float,
-    val spGrowth: Float,
+    @Deprecated("spGrowth is now deprecated.")
+    val spGrowth: Float = 0.25F,
 )
