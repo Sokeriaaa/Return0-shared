@@ -38,6 +38,16 @@ sealed interface ItemEntry {
     val amount: Int
 
     /**
+     * Resource key for displaying the name.
+     */
+    val resourceKey: String
+
+    /**
+     * Resource key for displaying the description.
+     */
+    val resourceDescKey: String
+
+    /**
      * An inventory item.
      */
     @Serializable
@@ -46,7 +56,10 @@ sealed interface ItemEntry {
         val inventoryKey: String,
         override val amount: Int = 1,
         override val key: String = "inventory:$inventoryKey",
-    ) : ItemEntry
+    ) : ItemEntry {
+        override val resourceKey: String = "inventory.${inventoryKey}"
+        override val resourceDescKey: String = "inventory.${inventoryKey}.desc"
+    }
 
     /**
      * A plugin item.
@@ -70,5 +83,8 @@ sealed interface ItemEntry {
                 "Tier must be between 0 and 5, current: $tier"
             }
         }
+
+        override val resourceKey: String = "plugin.${pluginKey}"
+        override val resourceDescKey: String = "plugin.${pluginKey}.desc"
     }
 }
