@@ -33,7 +33,7 @@ sealed interface EventValue : Value.Event {
      */
     @Serializable
     @SerialName("Event.Currency")
-    data class Currency(val type: CurrencyType) : EventValue
+    data class Currency(val currencyType: CurrencyType) : EventValue
 
     /**
      * Returns the current inventory of the specified item.
