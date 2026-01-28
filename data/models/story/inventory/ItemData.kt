@@ -53,6 +53,7 @@ data class ItemData(
         CONSUMABLE,
         MATERIAL,
         QUEST,
+        PLUGIN,
         OTHER,
     }
 
