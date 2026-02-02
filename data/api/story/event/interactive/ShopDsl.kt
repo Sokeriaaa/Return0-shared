@@ -32,7 +32,7 @@ annotation class ShopDslMarker
 
 @ShopDslMarker
 inline fun buildShop(
-    key: String? = null,
+    key: String,
     builder: ShopBuilder.() -> Unit,
 ) = Event.Shop(
     key = key,
@@ -192,7 +192,7 @@ value class ShopEntryStarter @PublishedApi internal constructor(
 /**
  * An example of DSL-constructed shop.
  */
-private val exampleShop: Event.Shop = buildShop {
+private val exampleShop: Event.Shop = buildShop("shop_key") {
     inventory("awesome_item") soldFor 100.token
     inventory("epic_item") soldFor 200.token
     (inventory("legendary_item") soldFor 5.crypto)

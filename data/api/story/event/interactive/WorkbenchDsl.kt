@@ -29,7 +29,7 @@ annotation class WorkbenchDslMarker
 
 @WorkbenchDslMarker
 inline fun buildWorkbench(
-    key: String? = null,
+    key: String,
     builder: WorkbenchBuilder.() -> Unit,
 ) = Event.Workbench(
     key = key,
@@ -212,7 +212,7 @@ value class WorkbenchEntryStarter @PublishedApi internal constructor(
 /**
  * An example of DSL-constructed workbench.
  */
-private val exampleWorkbench: Event.Workbench = buildWorkbench {
+private val exampleWorkbench: Event.Workbench = buildWorkbench("workbench_key") {
     inputting(
         50 of "awesome_item",
         100 of "epic_item",

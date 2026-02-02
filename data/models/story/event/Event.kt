@@ -255,12 +255,11 @@ sealed interface Event {
      * Open a shop panel that can purchase items.
      *
      * @param key The key of this shop, used to compute refresh time.
-     *            Can be `null` only when all the entries can not be restocked.
      */
     @Serializable
     @SerialName("Shop")
     data class Shop(
-        val key: String? = null,
+        val key: String,
         val entries: List<ShopEntry>,
     ) : Event
 
@@ -270,7 +269,7 @@ sealed interface Event {
     @Serializable
     @SerialName("Workbench")
     data class Workbench(
-        val key: String? = null,
+        val key: String,
         val entries: List<WorkbenchEntry>,
     ) : Event
 
