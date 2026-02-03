@@ -121,6 +121,7 @@ sealed interface Event {
         val config: Config,
         val success: Event = Empty,
         val failure: Event = Failed,
+        val escaped: Event = Empty,
     ) : Event {
         /**
          * Combat config.
@@ -155,6 +156,7 @@ sealed interface Event {
             val additionalParties: List<Pair<String, Value.Event>> = emptyList(),
             val useOnlyAdditional: Boolean = false,
             val statusOverride: Map<String, StatusOverride>? = null,
+            val allowEscape: Boolean = true,
         ) {
             /**
              * Override the entity status for this combat temporary.
