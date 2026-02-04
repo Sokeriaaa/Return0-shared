@@ -26,5 +26,17 @@ data class Manifest(
     @Serializable
     data class Entities(
         val list: List<String>,
-    )
+        val effects: Effects,
+        val skills: Skills,
+    ) {
+        @Serializable
+        data class Effects(
+            val list: List<String>,
+        )
+
+        @Serializable
+        data class Skills(
+            val list: List<String>,
+        )
+    }
 }
