@@ -15,7 +15,6 @@
 package sokeriaaa.return0.shared.data.models.entity
 
 import kotlinx.serialization.Serializable
-import sokeriaaa.return0.shared.data.models.action.function.FunctionData
 import sokeriaaa.return0.shared.data.models.action.function.FunctionTarget
 import sokeriaaa.return0.shared.data.models.entity.category.Category
 import sokeriaaa.return0.shared.data.models.entity.path.EntityPath
@@ -44,7 +43,7 @@ data class EntityData(
     val baseSP: Int,
     val baseAP: Int,
     val levelPacing: Int = 50,
-    val functions: List<FunctionData>,
+    val functions: List<String>,
     val attackModifier: GeneralAttackModifier? = null,
     val dropTable: EntityDropTable? = null,
 ) {
