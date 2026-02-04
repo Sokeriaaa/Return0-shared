@@ -14,8 +14,11 @@
  */
 package sokeriaaa.return0.shared.common.helpers
 
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 object TimeHelper {
 
@@ -41,6 +44,12 @@ object TimeHelper {
         val dayOfWeek = (daysSinceEpoch + 4) % 7
         val daysUntilSunday = (7 - dayOfWeek) % 7
         return (daysSinceEpoch + daysUntilSunday) * ONE_DAY
+    }
+
+    fun millisToString(millis: Long): String {
+        val instant = Instant.fromEpochMilliseconds(millis)
+        val localDateTime = instant.toLocalDateTime(TimeZone.currentSystemDefault())
+        return localDateTime.toString()
     }
 
 }
