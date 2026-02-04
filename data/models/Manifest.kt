@@ -15,6 +15,7 @@
 package sokeriaaa.return0.shared.data.models
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 /**
  * Contains the manifest of resources.
@@ -39,4 +40,9 @@ data class Manifest(
             val list: List<String>,
         )
     }
+
+    @Transient
+    val entryCount = entities.list.size +
+            entities.effects.list.size +
+            entities.skills.list.size
 }
