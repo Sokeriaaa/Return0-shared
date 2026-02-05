@@ -43,6 +43,18 @@ sealed interface CommonExtra : Extra.Combat, Extra.Item {
     ) : CommonExtra
 
     /**
+     * Check the conditions in [cases] one by one, if `true`, execute the extra stop
+     *  calculating. If all conditions are `false`, execute the [defaultExtra].
+     */
+    @ConsistentCopyVisibility
+    @Serializable
+    @SerialName("Common.Cased")
+    data class Cased @PublishedApi internal constructor(
+        val cases: Map<Condition, Extra?>,
+        val defaultExtra: Extra? = null,
+    ) : CommonExtra
+
+    /**
      * A group of extras, all extra will be executed one by one.
      */
     @ConsistentCopyVisibility

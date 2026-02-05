@@ -58,6 +58,18 @@ sealed interface Event {
     ) : Event
 
     /**
+     * Check the conditions in [cases] one by one, if `true`, execute the event stop
+     *  calculating. If all conditions are `false`, execute the [defaultEvent].
+     */
+    @ConsistentCopyVisibility
+    @Serializable
+    @SerialName("Cased")
+    data class Cased @PublishedApi internal constructor(
+        val cases: Map<Condition, Event?>,
+        val defaultEvent: Event? = null,
+    ) : Event
+
+    /**
      * Conversation.
      */
     @Serializable

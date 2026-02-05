@@ -130,4 +130,16 @@ sealed interface CommonValue : Value.Combat, Value.Event, Value.Item {
         val defaultValue: Value? = null,
     ) : CommonValue
 
+    /**
+     * Check the conditions in [cases] one by one, if `true`, return the value and stop
+     *  calculating. If all conditions are `false`, return the [defaultValue].
+     */
+    @ConsistentCopyVisibility
+    @Serializable
+    @SerialName("Common.Cased")
+    data class Cased @PublishedApi internal constructor(
+        val cases: Map<Condition, Value?>,
+        val defaultValue: Value? = null,
+    ) : CommonValue
+
 }
