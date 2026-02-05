@@ -40,6 +40,10 @@ import sokeriaaa.return0.shared.data.models.entity.category.Category
  *  of entity required to unlock this function.
  *  **Supports** empty list, which will mean this function is always unlocked and cannot be
  *  upgraded.
+ * @param priority The priority of this function when auto-combat is enabled. Each available
+ *  target is calculated independently. The arena will choose the function and target with
+ *  the highest priority. This value is recommended to set in 0..1. For some emergency
+ *  functions (for example, healing a party with low HP), can be set above 1. Default is 0.
  * @param attackModifier Modifier for a damage/healing function, can be null.
  *  Some parameters is not applicable for healing. No effect on Effects.
  * @param extra Extra effects would apply to the target upon each successful attack/healing.
@@ -55,6 +59,7 @@ data class FunctionData(
     val powerBonus: Int,
     val baseSPCost: Int,
     val growth: List<Int>?,
+    val priority: Value? = null,
     val attackModifier: AttackModifier? = null,
     val extra: Extra? = null,
 ) {
