@@ -138,7 +138,7 @@ sealed interface CommonValue : Value.Combat, Value.Event, Value.Item {
     @Serializable
     @SerialName("Common.Cased")
     data class Cased @PublishedApi internal constructor(
-        val cases: Map<Condition, Value?>,
+        val cases: List<Pair<Condition, Value?>>,
         val defaultValue: Value? = null,
     ) : CommonValue
 

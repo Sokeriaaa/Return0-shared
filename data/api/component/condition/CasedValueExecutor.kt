@@ -41,11 +41,11 @@ inline fun eventCases(
 }
 
 class CasedValueExecutor @PublishedApi internal constructor(
-    val cases: MutableMap<Condition, Value?> = HashMap(),
+    val cases: MutableList<Pair<Condition, Value?>> = ArrayList(),
     var defaultValue: Value? = null,
 ) {
     infix fun Condition.then(value: Value?) {
-        cases[this] = value
+        cases.add(this to value)
     }
 
     fun onDefault(value: Value?) {
