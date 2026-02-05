@@ -59,7 +59,7 @@ sealed interface EntityCondition : Condition.Combat {
          */
         @Serializable
         @SerialName("Entity.Effects.HasAny")
-        data class HasAny(val buff: Boolean = true, val debuff: Boolean = true) : Effects
+        data class HasAny(val buff: Boolean = false, val debuff: Boolean = false) : Effects
     }
 
     @Serializable
